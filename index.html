@@ -1119,12 +1119,141 @@
   }
 
   /* ── Responsive ── */
+  /* ── 手機版優化 ── */
+  @media (max-width: 768px) {
+    /* CTA 區域：隱藏左側品牌介紹，保持橫式兩欄 */
+    .cta-section {
+      grid-template-columns: 1fr auto;
+      padding: 3rem 1.5rem;
+      gap: 2rem;
+    }
+
+    .brand-intro {
+      display: none;
+    }
+
+    .cta-title {
+      font-size: 1.4rem;
+    }
+
+    .cta-desc {
+      font-size: 0.82rem;
+      max-width: 100%;
+    }
+
+    .qr-frame {
+      width: 120px;
+      height: 120px;
+    }
+
+    .line-btn {
+      padding: 0.7rem 1.4rem;
+      font-size: 0.75rem;
+    }
+
+    /* 篩選列改善 */
+    .filter-btn {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+
+    /* 商品卡片 */
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 16px;
+    }
+
+    .card-img {
+      height: 280px;
+    }
+
+    .fish-name {
+      font-size: 18px;
+    }
+
+    .fish-size {
+      font-size: 15px;
+    }
+
+    .price {
+      font-size: 22px;
+    }
+
+    .add-btn {
+      font-size: 14px;
+      padding: 12px 0;
+    }
+
+    /* 搜尋框 */
+    .search-input {
+      font-size: 16px;
+      padding: 14px 18px;
+    }
+
+    /* 購物車按鈕 */
+    .cart-fab {
+      width: 60px;
+      height: 60px;
+      right: 16px;
+      bottom: 20px;
+    }
+  }
+
   @media (max-width: 480px) {
-    .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .card-img { height: 160px; }
-    .price { font-size: 18px; }
-    .add-btn { font-size: 11px; padding: 7px 0; letter-spacing: 0.06em; }
-    .cart-fab { width: 54px; height: 54px; right: 14px; bottom: 16px; }
+    .cta-section {
+      padding: 2rem 1rem;
+      gap: 1.5rem;
+    }
+
+    .cta-title {
+      font-size: 1.2rem;
+    }
+
+    .cta-desc {
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    .qr-frame {
+      width: 100px;
+      height: 100px;
+      padding: 6px;
+    }
+
+    .qr-label {
+      font-size: 0.65rem;
+    }
+
+    .line-btn {
+      padding: 0.65rem 1.2rem;
+      font-size: 0.72rem;
+    }
+
+    .cards-grid {
+      padding: 0 12px;
+    }
+
+    .card-img {
+      height: 240px;
+    }
+
+    .fish-name {
+      font-size: 17px;
+    }
+
+    .fish-size {
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 20px;
+    }
+
+    .filter-btn {
+      font-size: 13px;
+      padding: 9px 12px;
+    }
   }
 </style>
 </head>
