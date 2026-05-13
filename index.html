@@ -79,6 +79,107 @@
     opacity: 0.5;
   }
 
+  /* ── LINE 加入引導橫幅 ── */
+  .line-banner {
+    background: linear-gradient(135deg, #06C755 0%, #04a847 100%);
+    color: white;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .line-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .line-banner-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+  }
+  .line-banner-text { flex: 1; min-width: 0; }
+  .line-banner-eyebrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    opacity: 0.85;
+    margin-bottom: 6px;
+  }
+  .line-banner-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(18px, 4vw, 22px);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .line-banner-sub {
+    font-size: 13px;
+    opacity: 0.88;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .line-banner-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: #06C755;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  }
+  .line-banner-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+  }
+  .line-banner-btn-icon {
+    width: 18px; height: 18px;
+    background: #06C755;
+    color: white;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, sans-serif;
+  }
+  .line-banner-qr {
+    flex-shrink: 0;
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  }
+  .line-banner-qr img {
+    display: block;
+    width: 110px;
+    height: 110px;
+  }
+  .line-banner-qr-label {
+    text-align: center;
+    font-size: 10px;
+    color: var(--ink-light);
+    margin-top: 4px;
+    letter-spacing: 0.08em;
+    font-family: 'Noto Serif TC', serif;
+  }
+  @media (max-width: 520px) {
+    .line-banner-inner { gap: 14px; }
+    .line-banner-qr img { width: 88px; height: 88px; }
+  }
+
   /* ── Filter bar ── */
   .filter-wrap {
     background: var(--navy-dark);
@@ -628,79 +729,6 @@
     transform: rotate(90deg);
   }
 
-  /* ── 送單確認 Modal ── */
-  .submit-modal-bg {
-    position: fixed; inset: 0;
-    background: rgba(16,40,71,0.55);
-    z-index: 110;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    backdrop-filter: blur(3px);
-  }
-  .submit-modal-bg.open { display: flex; }
-  .submit-modal {
-    background: white;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 460px;
-    box-shadow: 0 10px 36px rgba(0,0,0,0.3);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    max-height: 90vh;
-  }
-  .submit-modal-head {
-    background: #06C755;
-    color: white;
-    padding: 14px 20px;
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    letter-spacing: 0.12em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .submit-modal-body { padding: 18px 20px; overflow-y: auto; }
-  .submit-modal-step {
-    font-size: 13px;
-    color: var(--ink);
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-  .submit-modal-step b { color: var(--navy); }
-  .order-preview {
-    width: 100%;
-    background: var(--cream);
-    border: 1px solid var(--divider);
-    border-radius: 6px;
-    padding: 12px 14px;
-    font-family: 'Noto Serif TC', monospace;
-    font-size: 12px;
-    color: var(--ink);
-    white-space: pre-wrap;
-    line-height: 1.55;
-    max-height: 220px;
-    overflow-y: auto;
-    resize: none;
-  }
-  .submit-modal-foot {
-    padding: 12px 20px 18px;
-    display: flex;
-    gap: 8px;
-    border-top: 1px solid var(--divider);
-  }
-  .submit-modal-foot button { font-family: 'Noto Serif TC', serif; }
-  .copy-status {
-    font-size: 12px;
-    color: #2a6b3a;
-    margin-top: 6px;
-    letter-spacing: 0.06em;
-    min-height: 16px;
-  }
-  .copy-status.fail { color: #b05a2a; }
-
   /* ── Responsive ── */
   @media (max-width: 480px) {
     .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -719,6 +747,27 @@
   <div class="tagline">Where Every Fish Brings Joy</div>
   <div class="header-rule"></div>
 </header>
+
+<!-- LINE 加入引導橫幅 — 客人先加好友再下單 -->
+<section class="line-banner">
+  <div class="line-banner-inner">
+    <div class="line-banner-text">
+      <div class="line-banner-eyebrow">STEP 1 · 加入官方帳號</div>
+      <div class="line-banner-title">先加入 LINE，下單最快</div>
+      <div class="line-banner-sub">挑選商品後直接送出訂單到 @joyfulfish，<br>我們會在 LINE 為您確認貨況與最終報價。</div>
+      <a class="line-banner-btn" href="https://line.me/R/ti/p/@joyfulfish" target="_blank" rel="noopener">
+        <span class="line-banner-btn-icon">L</span>
+        <span>加入 @joyfulfish</span>
+      </a>
+    </div>
+    <div>
+      <div class="line-banner-qr">
+        <img src="line_qrcode.png" alt="掃描加入 LINE 官方帳號">
+      </div>
+      <div class="line-banner-qr-label">掃 QR 加好友</div>
+    </div>
+  </div>
+</section>
 
 <nav class="filter-wrap" id="filterBar">
   <!-- injected by JS -->
@@ -774,30 +823,6 @@
 </div>
 
 <div class="toast" id="toast"></div>
-
-<!-- 送單確認 Modal -->
-<div class="submit-modal-bg" id="submitModal">
-  <div class="submit-modal">
-    <div class="submit-modal-head">
-      <span style="font-size:18px">📋</span>
-      訂單已準備好 — 請傳到 LINE
-    </div>
-    <div class="submit-modal-body">
-      <div class="submit-modal-step">
-        <b>第 1 步：</b>訂單明細已自動複製到剪貼簿<br>
-        <b>第 2 步：</b>點下方「前往 LINE 對話框」按鈕<br>
-        <b>第 3 步：</b>在 @joyfulfish 對話框長按貼上、按送出
-      </div>
-      <textarea class="order-preview" id="orderPreview" readonly></textarea>
-      <div class="copy-status" id="copyStatus"></div>
-    </div>
-    <div class="submit-modal-foot">
-      <button class="btn-secondary" id="modalClose">關閉</button>
-      <button class="btn-secondary" id="modalReCopy">再複製一次</button>
-      <button class="btn-submit" id="modalGoLine">前往 LINE 對話框 →</button>
-    </div>
-  </div>
-</div>
 
 <footer>
   © 魚樂匯 JOYFUL FISH &nbsp;·&nbsp; LINE OA <a href="https://line.me/R/ti/p/@joyfulfish">@joyfulfish</a>
@@ -1340,40 +1365,26 @@ async function copyToClipboard(text) {
   }
 }
 
-function setCopyStatus(ok) {
-  const el = document.getElementById('copyStatus');
-  if (ok) {
-    el.textContent = '✓ 已複製到剪貼簿';
-    el.classList.remove('fail');
-  } else {
-    el.textContent = '⚠ 自動複製失敗，請手動全選上方文字複製';
-    el.classList.add('fail');
-  }
-}
-
+// 點送出 → 複製訂單 + 直接跳轉 LINE 對話視窗
 document.getElementById('cartSubmit').addEventListener('click', async () => {
   const msg = buildOrderMessage();
   if (!msg) return;
-  document.getElementById('orderPreview').value = msg;
-  const ok = await copyToClipboard(msg);
-  setCopyStatus(ok);
-  document.getElementById('submitModal').classList.add('open');
-});
 
-document.getElementById('modalClose').addEventListener('click', () => {
-  document.getElementById('submitModal').classList.remove('open');
-});
+  // 先嘗試複製到剪貼簿（同步使用者手勢內，成功率最高）
+  const copied = await copyToClipboard(msg);
 
-document.getElementById('modalReCopy').addEventListener('click', async () => {
-  const ok = await copyToClipboard(document.getElementById('orderPreview').value);
-  setCopyStatus(ok);
-});
+  // 收起購物車面板，讓畫面變乾淨、看得到提示
+  closeCart();
 
-document.getElementById('modalGoLine').addEventListener('click', () => {
-  // 直接開啟 LINE OA 對話頁 — 最穩定的跨平台做法
-  // 手機有 LINE app 會直接喚起，桌機會開 LINE 網頁/Desktop
+  // 直接開啟 LINE OA 對話頁
+  // 手機有 LINE app 會直接喚起 app，桌機會開 LINE 網頁/Desktop
   const url = `https://line.me/R/ti/p/${encodeURIComponent(LINE_OA_ID)}`;
   window.open(url, '_blank');
+
+  // 提示客人：訂單已複製、貼到 LINE 對話框送出
+  toast(copied
+    ? '訂單已複製 — 請在 LINE 對話框長按貼上送出'
+    : '已開啟 LINE — 請手動轉貼訂單');
 });
 
 // 初始狀態
