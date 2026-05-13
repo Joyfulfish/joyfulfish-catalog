@@ -559,6 +559,74 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+  /* ── 大圖預覽（Lightbox） ── */
+  .card-img img { cursor: zoom-in; }
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(10,20,40,0.92);
+    z-index: 150;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 80px;
+    backdrop-filter: blur(6px);
+    animation: lbFadeIn 0.2s ease;
+  }
+  .lightbox.open { display: flex; }
+  @keyframes lbFadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: calc(100vh - 140px);
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 60px rgba(0,0,0,0.5);
+    animation: lbZoomIn 0.22s ease;
+    cursor: zoom-out;
+  }
+  @keyframes lbZoomIn {
+    from { opacity: 0; transform: scale(0.92) }
+    to { opacity: 1; transform: scale(1) }
+  }
+
+  .lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-light);
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    letter-spacing: 0.16em;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    padding: 0 20px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(232,208,122,0.4);
+    color: var(--gold-light);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.18s;
+    line-height: 1;
+  }
+  .lightbox-close:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: var(--gold);
+    transform: rotate(90deg);
+  }
+
   /* ── 送單確認 Modal ── */
   .submit-modal-bg {
     position: fixed; inset: 0;
@@ -696,6 +764,13 @@
     </div>
   </div>
 </aside>
+
+<!-- 大圖預覽 Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="商品大圖">
+  <button class="lightbox-close" id="lightboxClose" aria-label="關閉">×</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -934,7 +1009,6 @@ function buildImageCandidates(name) {
   const list = [];
   const explicit = IMG_MAP[name];
   if (explicit) list.push(IMG_BASE + encodeURI(explicit));
-  // 自動嘗試常見命名
   const enc = encodeURIComponent(name);
   const exts = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'];
   const suffixes = ['', '1', '2', '_2'];
@@ -943,14 +1017,12 @@ function buildImageCandidates(name) {
       list.push(`${IMG_BASE}${enc}${sfx}${ext}`);
     }
   }
-  // 去重保序
   return [...new Set(list)];
 }
 
 function renderCard(d) {
   const icon = CAT_ICONS[d.cat] || DEFAULT_ICON;
   const cands = buildImageCandidates(d.name);
-  // 把候選 URL 編成 data-fb 屬性，由 onerror 連鎖嘗試
   const fbJson = JSON.stringify(cands).replace(/"/g, '&quot;');
   const imgHtml = `<img src="${cands[0]}" alt="${escapeAttr(d.name)}" loading="lazy"
        data-fb="${fbJson}" data-idx="0"
@@ -959,7 +1031,7 @@ function renderCard(d) {
   const key = `${d.name}|${d.size}`;
   return `
   <div class="fish-card" data-cat="${escapeAttr(d.cat)}" data-name="${escapeAttr(d.name)}">
-    <div class="card-img">
+    <div class="card-img" data-name="${escapeAttr(d.name)}">
       ${imgHtml}
     </div>
     <div class="card-body">
@@ -1042,6 +1114,44 @@ document.getElementById('searchInput').addEventListener('input', e => {
 });
 
 renderAll();
+
+/* ─────────── 大圖預覽 Lightbox ─────────── */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCap = document.getElementById('lightboxCaption');
+
+function openLightbox(src, name) {
+  lightboxImg.src = src;
+  lightboxImg.alt = name;
+  lightboxCap.textContent = name;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightboxImg.src = '';
+  document.body.style.overflow = '';
+}
+
+// 點商品卡圖片開啟大圖（用 event delegation）
+document.getElementById('mainContent').addEventListener('click', e => {
+  const img = e.target.closest('.card-img img');
+  if (!img) return;
+  // 圖片載入失敗（顯示 emoji）時不要打開
+  if (img.style.display === 'none' || !img.src) return;
+  const card = img.closest('.fish-card');
+  const name = card ? card.dataset.name : (img.alt || '');
+  openLightbox(img.src, name);
+});
+
+// 關閉途徑：X 按鈕、點背景、點圖片本身、ESC 鍵
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox || e.target === lightboxImg) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+});
 
 /* ─────────── 購物車 ─────────── */
 const LINE_OA_ID  = '@joyfulfish';     // LINE 官方帳號 ID
