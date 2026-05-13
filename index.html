@@ -833,38 +833,72 @@ const DEFAULT_ICON = "🐟";
 // 商品名 → 圖檔（位於 商品圖影檔/）
 const IMG_BASE = "商品圖影檔/";
 const IMG_MAP = {
-  "巧克力象鼻龍": "巧克力象鼻龍.jpg",
-  "菲律賓藍天使": "菲律賓藍天使.jpg",
-  "翠鳥枝牙蝦虎－公": "翠鳥枝牙蝦虎.jpg",
-  "翠鳥枝牙蝦虎－母": "翠鳥枝牙蝦虎.jpg",
-  "美艷枝牙蝦虎－公": "美艷枝牙蝦虎.jpg",
-  "美艷枝牙蝦虎－母": "美艷枝牙蝦虎.jpg",
-  "龜紋鯔蝦虎": "龜紋鯔蝦虎.jpg",
-  "大斑神農吻蝦虎": "大斑神農吻蝦虎.jpg",
-  "戴氏吻蝦虎（紅型）": "戴氏吻蝦虎_紅型.jpg",
-  "菲律賓卡氏吻蝦虎": "菲律賓卡氏吻蝦虎.jpg",
-  "湖南蜜蜂吻蝦虎": "湖南蜜蜂吻蝦虎.jpg",
-  "黃鰭棘鰓塘鱧": "黃鰭棘鰓塘鱧.jpg",
-  "翡翠金面飛狐": "翡翠金面飛狐.jpg",
-  "皇冠小鲃": "皇冠小鲃.jpg",
-  "金條": "金條.jpg",
-  "越南鱊": "越南鱊.jpg",
-  "麗紋細鯽": "麗紋細鯽.jpg",
-  "虹彩光唇魚": "虹彩光唇魚.jpg",
-  "平舟原纓口鰍": "平舟原纓口鰍.jpg",
-  "廣西秉氏吸鰍": "廣西秉氏吸鰍.jpg",
-  "黃果樹爬岩鰍": "黃果樹爬岩鰍.jpg",
-  "西昌華吸鰍": "西昌華吸鰍.png",
-  "美麗思凡吸鰍": "美麗思凡吸鰍.jpg",
-  "迪氏思凡吸鰍": "迪氏思凡吸鰍.jpg",
-  "豹紋松鼠鰍": "豹紋松鼠鰍.jpg",
-  "金環鼠": "金環鼠.jpg",
-  "越南華吸鰍": "越南華吸鰍.jpg",
-  "電波蛇魚": "電波蛇魚.jpg",
-  "疣背小條鰍（翠綠紅尾鰍）": "翠綠紅尾鰍.jpg",
-  "尖頭雲南鰍（尖頭泳鰍）": "尖頭雲南鰍.jpg",
-  "豹紋雲南鰍（豹紋泳鰍）": "豹紋雲南鰍.jpg",
-  "溪鱧": "溪鱧.jpg",
+  "伯爵小丑鰍": "伯爵小丑鰍1.jpg",
+  "印尼紅蘋果蟹": "印尼紅蘋果蟹1.jpg",
+  "圓體爬岩鰍": "圓體爬岩鰍1.jpg",
+  "多輻韌蝦虎": "多輻韌蝦虎1.jpg",
+  "大斑神農吻蝦虎": "大斑神農吻蝦虎1.jpg",
+  "安妮枝牙蝦虎－公": "安妮枝牙蝦虎－公1.jpg",
+  "安妮枝牙蝦虎－母": "安妮枝牙蝦虎－母1.jpg",
+  "尖頭雲南鰍（尖頭泳鰍）": "尖頭雲南鰍(尖頭泳鰍)1.jpg",
+  "巧克力象鼻龍": "巧克力象鼻龍1.jpg",
+  "巨人網球蝦": "巨人網球蝦.jpg",
+  "平舟原纓口鰍": "平舟原纓口鰍1.JPG",
+  "廣西秉氏吸鰍": "廣西秉氏吸鰍1.jpg",
+  "戴氏吻蝦虎（紅型）": "戴氏吻蝦虎（紅型）1.jpg",
+  "所羅門韌蝦虎": "所羅門韌蝦虎1.jpg",
+  "明多羅龍口鰻": "明多羅龍口鰻1.jpg",
+  "橘尾禿頭鯊": "橘尾禿頭鯊1.jpg",
+  "橙斑吸鰍": "橙斑吸鰍1.jpg",
+  "海南熊貓爬岩鰍": "海南熊貓爬岩鰍1.JPG",
+  "湖南蜜蜂吻蝦虎": "湖南蜜蜂吻蝦虎1.jpg",
+  "溪鱧": "溪鱧1.jpg",
+  "無眼喀鰍": "無眼喀鰍1.jpg",
+  "牛欄江爬岩鰍": "牛欄江爬岩鰍1.jpg",
+  "犬首禿頭鯊": "犬首禿頭鯊1.jpg",
+  "環帶黃瓜蝦虎": "環帶黃瓜蝦虎1.jpg",
+  "疣背小條鰍（翠綠紅尾鰍）": "疣背小條鰍（翠綠紅尾鰍）1.PNG",
+  "白帶匙指蝦（蜜蜂網球蝦）": "白帶匙指蝦（蜜蜂網球蝦）.JPG",
+  "白瓷娃娃蟹": "白瓷娃娃蟹1.jpg",
+  "皇冠小鲃": "皇冠小鲃1.jpg",
+  "短身金沙鰍": "短身金沙鰍1.jpg",
+  "紋面韌蝦虎－公": "紋面韌蝦虎－公1.jpg",
+  "綠皮中華刺鰍": "綠皮中華刺鰍1.JPG",
+  "綠翡翠枝牙蝦虎": "綠翡翠枝牙蝦虎1.jpg",
+  "縱紋原纓口鰍": "縱紋原纓口鰍1.PNG",
+  "美艷枝牙蝦虎－公": "美艷枝牙蝦虎－公1.JPG",
+  "美麗彩虹仙子": "美麗彩虹仙子1.jpg",
+  "美麗思凡吸鰍": "美麗思凡吸鰍1.jpg",
+  "美麗韌蝦虎": "美麗韌蝦虎1.jpg",
+  "翠鳥枝牙蝦虎－公": "翠鳥枝牙蝦虎－公1.jpg",
+  "翠鳥枝牙蝦虎－母": "翠鳥枝牙蝦虎－母1.jpg",
+  "翡翠金面飛狐": "翡翠金面飛狐1.png",
+  "菲律賓卡氏吻蝦虎": "菲律賓卡氏吻蝦虎1.jpg",
+  "菲律賓藍天使": "菲律賓藍天使1.jpg",
+  "蘇拉威西韌蝦虎－公": "蘇拉威西韌蝦虎－公1.jpg",
+  "蘇拉威西韌蝦虎－母": "蘇拉威西韌蝦虎－母1.JPG",
+  "虹彩光唇魚": "虹彩光唇魚1.jpg",
+  "西昌華吸鰍": "西昌華吸鰍1.JPG",
+  "豹紋啦啦蟹": "豹紋啦啦蟹.jpg",
+  "豹紋松鼠鰍": "豹紋松鼠鰍1.jpg",
+  "豹紋雲南鰍（豹紋泳鰍）": "豹紋雲南鰍(豹紋泳鰍)1.jpg",
+  "越南華吸鰍": "越南華吸鰍1.jpg",
+  "越南鱊": "越南鱊1.jpg",
+  "迪氏思凡吸鰍": "迪氏思凡吸鰍1.jpg",
+  "金條": "金條1.jpg",
+  "金沙鰍": "金沙鰍1.PNG",
+  "金環鼠": "金環鼠1.jpg",
+  "陳氏纓口鰍": "陳氏纓口鰍1.png",
+  "陶瓷娃娃蟹": "陶瓷娃娃蟹1.jpg",
+  "電波蛇魚": "電波蛇魚1.jpg",
+  "青欖華吸鰍": "青欖華吸鰍1.jpg",
+  "麗紋細鯽": "麗紋細鯽1.PNG",
+  "黃果樹爬岩鰍": "黃果樹爬岩鰍1.jpg",
+  "黃金英哥鼠": "黃金英哥鼠1.jpg",
+  "黃鰭棘鰓塘鱧": "黃鰭棘鰓塘鱧1.png",
+  "黑寶石鯽": "黑寶石鯽1.jpg",
+  "點帶米蝦": "點帶米蝦.jpg",
+  "龜紋鯔蝦虎": "龜紋鯔蝦虎1.jpg",
 };
 
 // Group by category — preserve insertion order
@@ -880,13 +914,48 @@ function escapeAttr(s) {
   return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
+// onerror 連鎖：第一個 URL 失敗就換下一個，全部失敗才顯示 emoji 佔位符
+window.tryNextImg = function(img) {
+  try {
+    const list = JSON.parse(img.dataset.fb);
+    const next = (parseInt(img.dataset.idx, 10) || 0) + 1;
+    if (next < list.length) {
+      img.dataset.idx = next;
+      img.src = list[next];
+      return;
+    }
+  } catch (e) {}
+  img.style.display = 'none';
+  if (img.nextElementSibling) img.nextElementSibling.style.display = 'flex';
+};
+
+// 給定商品名，回傳要嘗試的圖片 URL 陣列（IMG_MAP 優先，其後是常見命名規則自動猜）
+function buildImageCandidates(name) {
+  const list = [];
+  const explicit = IMG_MAP[name];
+  if (explicit) list.push(IMG_BASE + encodeURI(explicit));
+  // 自動嘗試常見命名
+  const enc = encodeURIComponent(name);
+  const exts = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'];
+  const suffixes = ['', '1', '2', '_2'];
+  for (const sfx of suffixes) {
+    for (const ext of exts) {
+      list.push(`${IMG_BASE}${enc}${sfx}${ext}`);
+    }
+  }
+  // 去重保序
+  return [...new Set(list)];
+}
+
 function renderCard(d) {
   const icon = CAT_ICONS[d.cat] || DEFAULT_ICON;
-  const imgFile = IMG_MAP[d.name];
-  const imgHtml = imgFile
-    ? `<img src="${IMG_BASE}${encodeURI(imgFile)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-       <span class="img-placeholder" style="display:none">${icon}</span>`
-    : `<span class="img-placeholder">${icon}</span>`;
+  const cands = buildImageCandidates(d.name);
+  // 把候選 URL 編成 data-fb 屬性，由 onerror 連鎖嘗試
+  const fbJson = JSON.stringify(cands).replace(/"/g, '&quot;');
+  const imgHtml = `<img src="${cands[0]}" alt="${escapeAttr(d.name)}" loading="lazy"
+       data-fb="${fbJson}" data-idx="0"
+       onerror="window.tryNextImg(this)">
+       <span class="img-placeholder" style="display:none">${icon}</span>`;
   const key = `${d.name}|${d.size}`;
   return `
   <div class="fish-card" data-cat="${escapeAttr(d.cat)}" data-name="${escapeAttr(d.name)}">
