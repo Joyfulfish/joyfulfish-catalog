@@ -91,7 +91,7 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.28em;
-    color: rgba(26,45,90,0.42);
+    color: var(--navy);
     text-transform: uppercase;
   }
 
@@ -748,7 +748,7 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
-    color: rgba(26,45,90,0.5);
+    color: var(--navy);
     margin-left: 0.6rem;
   }
   .footer-note {
@@ -1417,93 +1417,176 @@
 
 <script>
 const RAW = [
-  {cat:"鰍類",name:"牛欄江爬岩鰍",size:"4~5",stock:13,price:630},
-  {cat:"鰍類",name:"平舟原纓口鰍",size:"7~9",stock:47,price:540},
-  {cat:"鰍類",name:"廣西秉氏吸鰍",size:"6",stock:22,price:650},
-  {cat:"鰍類",name:"橙斑吸鰍",size:"5~6",stock:7,price:810},
-  {cat:"鰍類",name:"縱紋原纓口鰍",size:"4~5",stock:9,price:540},
-  {cat:"鰍類",name:"黃果樹爬岩鰍",size:"4~5",stock:14,price:990},
-  {cat:"鰍類",name:"西昌華吸鰍",size:"6~8",stock:12,price:1080},
-  {cat:"鰍類",name:"美麗思凡吸鰍",size:"3~5",stock:2,price:865},
-  {cat:"鰍類",name:"迪氏思凡吸鰍",size:"4~5",stock:23,price:865},
-  {cat:"鰍類",name:"圓體爬岩鰍",size:"3~4",stock:16,price:1170},
-  {cat:"鰍類",name:"陳氏纓口鰍",size:"5~6",stock:25,price:450},
-  {cat:"鰍類",name:"海南熊貓爬岩鰍",size:"3~4",stock:71,price:180},
-  {cat:"鰍類",name:"豹紋松鼠鰍",size:"8~9",stock:6,price:540},
-  {cat:"鰍類",name:"金環鼠",size:"6~8",stock:66,price:630},
-  {cat:"鰍類",name:"金沙鰍",size:"8~10",stock:15,price:2160},
-  {cat:"鰍類",name:"青欖華吸鰍",size:"5~6",stock:4,price:810},
-  {cat:"鰍類",name:"短身金沙鰍",size:"7~8",stock:14,price:1800},
-  {cat:"鰍類",name:"越南華吸鰍",size:"4~5",stock:23,price:630},
-  {cat:"鰍類",name:"電波蛇魚",size:"4~5",stock:60,price:325},
-  {cat:"鰍類",name:"伯爵小丑鰍",size:"5",stock:25,price:1440},
-  {cat:"鰍類",name:"疣背小條鰍（翠綠紅尾鰍）",size:"5~7",stock:22,price:680},
-  {cat:"鰍類",name:"尖頭雲南鰍（尖頭泳鰍）",size:"4",stock:16,price:330},
-  {cat:"鰍類",name:"豹紋雲南鰍（豹紋泳鰍）",size:"4",stock:29,price:330},
-  {cat:"蟹",name:"白瓷娃娃蟹",size:"M",stock:12,price:180},
-  {cat:"蟹",name:"印尼紅蘋果蟹",size:"M",stock:11,price:110},
-  {cat:"蟹",name:"陶瓷娃娃蟹",size:"M",stock:22,price:90},
-  {cat:"蟹",name:"豹紋啦啦蟹",size:"M",stock:225,price:40},
-  {cat:"鯉科魚",name:"翡翠金面飛狐",size:"5",stock:23,price:210},
-  {cat:"鯉科魚",name:"黑寶石鯽",size:"5",stock:6,price:90},
-  {cat:"鯉科魚",name:"皇冠小鲃",size:"5",stock:22,price:210},
-  {cat:"鯉科魚",name:"金條",size:"3",stock:112,price:15},
-  {cat:"鯉科魚",name:"紅邊鰟鮍",size:"4",stock:30,price:215},
-  {cat:"鯉科魚",name:"越南鱊",size:"6~7",stock:44,price:630},
-  {cat:"鯉科魚",name:"麗紋細鯽",size:"2",stock:99,price:110},
-  {cat:"鯉科魚",name:"台灣石賓",size:"4~6",stock:100,price:40},
-  {cat:"鯉科魚",name:"台灣石賓",size:"6~8",stock:40,price:140},
-  {cat:"鯉科魚",name:"虹彩光唇魚",size:"8~12",stock:9,price:700},
-  {cat:"蝦虎/塘鱧",name:"犬首禿頭鯊",size:"7",stock:23,price:630},
-  {cat:"蝦虎/塘鱧",name:"多輻韌蝦虎",size:"3~4",stock:34,price:630},
-  {cat:"蝦虎/塘鱧",name:"安妮枝牙蝦虎－母",size:"2",stock:35,price:325},
-  {cat:"蝦虎/塘鱧",name:"安妮枝牙蝦虎－公",size:"3",stock:131,price:450},
-  {cat:"蝦虎/塘鱧",name:"所羅門韌蝦虎",size:"5",stock:17,price:2700},
-  {cat:"蝦虎/塘鱧",name:"美麗韌蝦虎",size:"3~4",stock:16,price:630},
-  {cat:"蝦虎/塘鱧",name:"紋面韌蝦虎－公",size:"4~5",stock:8,price:2160},
-  {cat:"蝦虎/塘鱧",name:"紫身枝牙蝦虎",size:"3~4",stock:36,price:450},
-  {cat:"蝦虎/塘鱧",name:"菲律賓藍天使",size:"5",stock:17,price:2700},
-  {cat:"蝦虎/塘鱧",name:"黑鰭枝牙蝦虎",size:"3",stock:260,price:215},
-  {cat:"蝦虎/塘鱧",name:"溪鱧",size:"3~5",stock:2,price:180},
-  {cat:"蝦虎/塘鱧",name:"溪鱧",size:"9 up",stock:5,price:900},
-  {cat:"蝦虎/塘鱧",name:"綠翡翠枝牙蝦虎",size:"4",stock:23,price:450},
-  {cat:"蝦虎/塘鱧",name:"翠鳥枝牙蝦虎－公",size:"5",stock:6,price:3240},
-  {cat:"蝦虎/塘鱧",name:"翠鳥枝牙蝦虎－母",size:"5",stock:5,price:2160},
-  {cat:"蝦虎/塘鱧",name:"寬帶祼身蝦虎",size:"3",stock:72,price:125},
-  {cat:"蝦虎/塘鱧",name:"橘尾禿頭鯊",size:"5~6",stock:17,price:540},
-  {cat:"蝦虎/塘鱧",name:"環帶黃瓜蝦虎",size:"4~8",stock:56,price:325},
-  {cat:"蝦虎/塘鱧",name:"蘇拉威西韌蝦虎－公",size:"3",stock:40,price:630},
-  {cat:"蝦虎/塘鱧",name:"蘇拉威西韌蝦虎－母",size:"4~5",stock:4,price:540},
-  {cat:"蝦虎/塘鱧",name:"美艷枝牙蝦虎－公",size:"4~5",stock:9,price:1620},
-  {cat:"蝦虎/塘鱧",name:"美艷枝牙蝦虎－母",size:"4~5",stock:6,price:1530},
-  {cat:"蝦虎/塘鱧",name:"阿部鯔蝦虎",size:"2~3",stock:10,price:180},
-  {cat:"蝦虎/塘鱧",name:"華氏種子鯊",size:"6~10",stock:10,price:270},
-  {cat:"蝦虎/塘鱧",name:"葦棲蝦虎",size:"3~5",stock:10,price:180},
-  {cat:"蝦虎/塘鱧",name:"龜紋鯔蝦虎",size:"3~4",stock:41,price:450},
-  {cat:"蝦虎/塘鱧",name:"大斑神農吻蝦虎",size:"4~6",stock:1,price:1080},
-  {cat:"蝦虎/塘鱧",name:"戴氏吻蝦虎（紅型）",size:"4~5",stock:25,price:630},
-  {cat:"蝦虎/塘鱧",name:"菲律賓卡氏吻蝦虎",size:"5~6",stock:6,price:810},
-  {cat:"蝦虎/塘鱧",name:"湖南蜜蜂吻蝦虎",size:"6",stock:10,price:865},
-  {cat:"蝦虎/塘鱧",name:"黃鰭棘鰓塘鱧",size:"6~8",stock:7,price:540},
-  {cat:"鼠魚",name:"黃金英哥鼠",size:"2.5",stock:20,price:450},
-  {cat:"野生蝦",name:"雲紋米蝦",size:"2~3",stock:50,price:72},
-  {cat:"野生蝦",name:"點帶米蝦",size:"2~5",stock:77,price:235},
-  {cat:"野生蝦",name:"巨人網球蝦",size:"4~5",stock:387,price:325},
-  {cat:"野生蝦",name:"巨人網球蝦",size:"8",stock:8,price:1170},
-  {cat:"野生蝦",name:"白帶匙指蝦（蜜蜂網球蝦）",size:"3~5",stock:17,price:648},
-  {cat:"野生蝦",name:"白帶匙指蝦（蜜蜂網球蝦）",size:"1~2",stock:41,price:540},
-  {cat:"野生蝦",name:"石紋匙指蝦（石紋網球蝦）",size:"4~6",stock:548,price:110},
-  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"3~5",stock:53,price:90},
-  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"1~3",stock:40,price:60},
-  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"6 up",stock:50,price:180},
-  {cat:"彩虹魚/燕子",name:"美麗彩虹仙子",size:"2.5",stock:22,price:215},
-  {cat:"脂鯉",name:"白帆玫瑰旗",size:"3",stock:150,price:35},
-  {cat:"脂鯉",name:"藍剛果燈",size:"2",stock:50,price:15},
-  {cat:"美洲慈鯛",name:"關刀寶石",size:"6",stock:60,price:90},
-  {cat:"美洲慈鯛",name:"血鸚鵡",size:"8",stock:6,price:54},
-  {cat:"洞穴魚",name:"無眼喀鰍",size:"4~5",stock:4,price:5400},
-  {cat:"其他魚類",name:"綠皮中華刺鰍",size:"8~10",stock:10,price:810},
-  {cat:"其他魚類",name:"巧克力象鼻龍",size:"20~22",stock:4,price:2700},
+  {cat:"鰍類",name:"牛欄江爬岩鰍",size:"4~5",stock:13,price:630}
+,
+  {cat:"鰍類",name:"平舟原纓口鰍",size:"7~9",stock:47,price:540}
+,
+  {cat:"鰍類",name:"廣西秉氏吸鰍",size:"6",stock:22,price:650}
+,
+  {cat:"鰍類",name:"橙斑吸鰍",size:"5~6",stock:7,price:810}
+,
+  {cat:"鰍類",name:"縱紋原纓口鰍",size:"4~5",stock:9,price:540}
+,
+  {cat:"鰍類",name:"黃果樹爬岩鰍",size:"4~5",stock:14,price:990}
+,
+  {cat:"鰍類",name:"西昌華吸鰍",size:"6~8",stock:12,price:1080}
+,
+  {cat:"鰍類",name:"美麗思凡吸鰍",size:"3~5",stock:2,price:865}
+,
+  {cat:"鰍類",name:"迪氏思凡吸鰍",size:"4~5",stock:23,price:865}
+,
+  {cat:"鰍類",name:"圓體爬岩鰍",size:"3~4",stock:16,price:1170}
+,
+  {cat:"鰍類",name:"陳氏纓口鰍",size:"5~6",stock:25,price:450}
+,
+  {cat:"鰍類",name:"海南熊貓爬岩鰍",size:"3~4",stock:71,price:180}
+,
+  {cat:"鰍類",name:"豹紋松鼠鰍",size:"8~9",stock:6,price:540}
+,
+  {cat:"鰍類",name:"金環鼠",size:"6~8",stock:66,price:630}
+,
+  {cat:"鰍類",name:"金沙鰍",size:"8~10",stock:15,price:2160}
+,
+  {cat:"鰍類",name:"青欖華吸鰍",size:"5~6",stock:4,price:810}
+,
+  {cat:"鰍類",name:"短身金沙鰍",size:"7~8",stock:14,price:1800}
+,
+  {cat:"鰍類",name:"越南華吸鰍",size:"4~5",stock:23,price:630}
+,
+  {cat:"鰍類",name:"電波蛇魚",size:"4~5",stock:60,price:325}
+,
+  {cat:"鰍類",name:"伯爵小丑鰍",size:"5",stock:25,price:1440}
+,
+  {cat:"鰍類",name:"疣背小條鰍（翠綠紅尾鰍）",size:"5~7",stock:22,price:680}
+,
+  {cat:"鰍類",name:"尖頭雲南鰍（尖頭泳鰍）",size:"4",stock:16,price:330}
+,
+  {cat:"鰍類",name:"豹紋雲南鰍（豹紋泳鰍）",size:"4",stock:29,price:330}
+,
+  {cat:"蟹",name:"白瓷娃娃蟹",size:"M",stock:12,price:180}
+,
+  {cat:"蟹",name:"印尼紅蘋果蟹",size:"M",stock:11,price:110}
+,
+  {cat:"蟹",name:"陶瓷娃娃蟹",size:"M",stock:22,price:90}
+,
+  {cat:"蟹",name:"豹紋啦啦蟹",size:"M",stock:225,price:40}
+,
+  {cat:"鯉科魚",name:"翡翠金面飛狐",size:"5",stock:23,price:210}
+,
+  {cat:"鯉科魚",name:"黑寶石鯽",size:"5",stock:6,price:90}
+,
+  {cat:"鯉科魚",name:"皇冠小鲃",size:"5",stock:22,price:210}
+,
+  {cat:"鯉科魚",name:"金條",size:"3",stock:112,price:15}
+,
+  {cat:"鯉科魚",name:"紅邊鰟鮍",size:"4",stock:30,price:215}
+,
+  {cat:"鯉科魚",name:"越南鱊",size:"6~7",stock:44,price:630}
+,
+  {cat:"鯉科魚",name:"麗紋細鯽",size:"2",stock:99,price:110}
+,
+  {cat:"鯉科魚",name:"台灣石賓",size:"4~6",stock:100,price:40}
+,
+  {cat:"鯉科魚",name:"台灣石賓",size:"6~8",stock:40,price:140}
+,
+  {cat:"鯉科魚",name:"虹彩光唇魚",size:"8~12",stock:9,price:700}
+,
+  {cat:"蝦虎/塘鱧",name:"犬首禿頭鯊",size:"7",stock:23,price:630}
+,
+  {cat:"蝦虎/塘鱧",name:"多輻韌蝦虎",size:"3~4",stock:34,price:630}
+,
+  {cat:"蝦虎/塘鱧",name:"安妮枝牙蝦虎－母",size:"2",stock:35,price:325}
+,
+  {cat:"蝦虎/塘鱧",name:"安妮枝牙蝦虎－公",size:"3",stock:131,price:450}
+,
+  {cat:"蝦虎/塘鱧",name:"所羅門韌蝦虎",size:"5",stock:17,price:2700}
+,
+  {cat:"蝦虎/塘鱧",name:"美麗韌蝦虎",size:"3~4",stock:16,price:630}
+,
+  {cat:"蝦虎/塘鱧",name:"紋面韌蝦虎－公",size:"4~5",stock:8,price:2160}
+,
+  {cat:"蝦虎/塘鱧",name:"紫身枝牙蝦虎",size:"3~4",stock:36,price:450}
+,
+  {cat:"蝦虎/塘鱧",name:"菲律賓藍天使",size:"5",stock:17,price:2700}
+,
+  {cat:"蝦虎/塘鱧",name:"黑鰭枝牙蝦虎",size:"3",stock:260,price:215}
+,
+  {cat:"蝦虎/塘鱧",name:"溪鱧",size:"3~5",stock:2,price:180}
+,
+  {cat:"蝦虎/塘鱧",name:"溪鱧",size:"9 up",stock:5,price:900}
+,
+  {cat:"蝦虎/塘鱧",name:"綠翡翠枝牙蝦虎",size:"4",stock:23,price:450}
+,
+  {cat:"蝦虎/塘鱧",name:"翠鳥枝牙蝦虎－公",size:"5",stock:6,price:3240}
+,
+  {cat:"蝦虎/塘鱧",name:"翠鳥枝牙蝦虎－母",size:"5",stock:5,price:2160}
+,
+  {cat:"蝦虎/塘鱧",name:"寬帶祼身蝦虎",size:"3",stock:72,price:125}
+,
+  {cat:"蝦虎/塘鱧",name:"橘尾禿頭鯊",size:"5~6",stock:17,price:540}
+,
+  {cat:"蝦虎/塘鱧",name:"環帶黃瓜蝦虎",size:"4~8",stock:56,price:325}
+,
+  {cat:"蝦虎/塘鱧",name:"蘇拉威西韌蝦虎－公",size:"3",stock:40,price:630}
+,
+  {cat:"蝦虎/塘鱧",name:"蘇拉威西韌蝦虎－母",size:"4~5",stock:4,price:540}
+,
+  {cat:"蝦虎/塘鱧",name:"美艷枝牙蝦虎－公",size:"4~5",stock:9,price:1620}
+,
+  {cat:"蝦虎/塘鱧",name:"美艷枝牙蝦虎－母",size:"4~5",stock:6,price:1530}
+,
+  {cat:"蝦虎/塘鱧",name:"阿部鯔蝦虎",size:"2~3",stock:10,price:180}
+,
+  {cat:"蝦虎/塘鱧",name:"華氏種子鯊",size:"6~10",stock:10,price:270}
+,
+  {cat:"蝦虎/塘鱧",name:"葦棲蝦虎",size:"3~5",stock:10,price:180}
+,
+  {cat:"蝦虎/塘鱧",name:"龜紋鯔蝦虎",size:"3~4",stock:41,price:450}
+,
+  {cat:"蝦虎/塘鱧",name:"大斑神農吻蝦虎",size:"4~6",stock:1,price:1080}
+,
+  {cat:"蝦虎/塘鱧",name:"戴氏吻蝦虎（紅型）",size:"4~5",stock:25,price:630}
+,
+  {cat:"蝦虎/塘鱧",name:"菲律賓卡氏吻蝦虎",size:"5~6",stock:6,price:810}
+,
+  {cat:"蝦虎/塘鱧",name:"湖南蜜蜂吻蝦虎",size:"6",stock:10,price:865}
+,
+  {cat:"蝦虎/塘鱧",name:"黃鰭棘鰓塘鱧",size:"6~8",stock:7,price:540}
+,
+  {cat:"鼠魚",name:"黃金英哥鼠",size:"2.5",stock:20,price:450}
+,
+  {cat:"野生蝦",name:"雲紋米蝦",size:"2~3",stock:50,price:72}
+,
+  {cat:"野生蝦",name:"點帶米蝦",size:"2~5",stock:77,price:235}
+,
+  {cat:"野生蝦",name:"巨人網球蝦",size:"4~5",stock:387,price:325}
+,
+  {cat:"野生蝦",name:"巨人網球蝦",size:"8",stock:8,price:1170}
+,
+  {cat:"野生蝦",name:"白帶匙指蝦（蜜蜂網球蝦）",size:"3~5",stock:17,price:648}
+,
+  {cat:"野生蝦",name:"白帶匙指蝦（蜜蜂網球蝦）",size:"1~2",stock:41,price:540}
+,
+  {cat:"野生蝦",name:"石紋匙指蝦（石紋網球蝦）",size:"4~6",stock:548,price:110}
+,
+  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"3~5",stock:53,price:90}
+,
+  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"1~3",stock:40,price:60}
+,
+  {cat:"野生蝦",name:"附刺擬匙指蝦（網球蝦）",size:"6 up",stock:50,price:180}
+,
+  {cat:"彩虹魚/燕子",name:"美麗彩虹仙子",size:"2.5",stock:22,price:215}
+,
+  {cat:"脂鯉",name:"白帆玫瑰旗",size:"3",stock:150,price:35}
+,
+  {cat:"脂鯉",name:"藍剛果燈",size:"2",stock:50,price:15}
+,
+  {cat:"洞穴魚",name:"無眼喀鰍",size:"4~5",stock:4,price:5400}
+,
+  {cat:"其他魚類",name:"綠皮中華刺鰍",size:"8~10",stock:10,price:810}
+,
+  {cat:"其他魚類",name:"巧克力象鼻龍",size:"20~22",stock:4,price:2700}
+,
   {cat:"汽水魚",name:"明多羅龍口鰻",size:"15~20",stock:33,price:1440}
 ];
 
