@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>魚樂匯 JOYFUL FISH — 商品目錄</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <style>
   :root {
     --navy: #1a2d5a;
@@ -757,6 +758,25 @@
     letter-spacing: 0.16em;
     color: rgba(44,44,44,0.45);
   }
+  .footer-stats {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: rgba(26,45,90,0.38);
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .footer-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .footer-stats .stat-value {
+    font-weight: 400;
+    color: var(--gold-dim);
+  }
   footer a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); transition: opacity 0.2s; }
   footer a:hover { opacity: 0.7; }
 
@@ -1381,6 +1401,14 @@
   <div>
     <span class="footer-brand">魚樂匯</span>
     <span class="footer-brand-en">Joyful Fish Studio</span>
+  </div>
+  <div class="footer-stats">
+    <span id="busuanzi_container_site_pv">
+      瀏覽 <span class="stat-value" id="busuanzi_value_site_pv">—</span>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      訪客 <span class="stat-value" id="busuanzi_value_site_uv">—</span>
+    </span>
   </div>
   <div class="footer-note">
     LINE OA <a href="https://line.me/R/ti/p/@joyfulfish" target="_blank">@joyfulfish</a> · 價格以實際下單為準
