@@ -2069,15 +2069,13 @@ document.getElementById('cartSubmit').addEventListener('click', async () => {
   // 收起購物車面板，讓畫面變乾淨、看得到提示
   closeCart();
 
-  // 直接開啟 LINE OA 對話頁
-  // 手機有 LINE app 會直接喚起 app，桌機會開 LINE 網頁/Desktop
-  const url = `https://line.me/R/ti/p/${encodeURIComponent(LINE_OA_ID)}`;
+  // 使用 LINE OA Message 格式，直接帶上訂單內容
+  // 手機有 LINE app 會直接喚起 app 並預填訊息，桌機會開 LINE 網頁版
+  const url = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_OA_ID)}/?${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 
-  // 提示客人：訂單已複製、貼到 LINE 對話框送出
-  toast(copied
-    ? '訂單已複製 — 請在 LINE 對話框長按貼上送出'
-    : '已開啟 LINE — 請手動轉貼訂單');
+  // 提示客人：訂單已自動帶入
+  toast('已開啟 LINE — 訂單內容已自動帶入，請確認後送出');
 });
 
 // 初始狀態
