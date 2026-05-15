@@ -2071,7 +2071,7 @@ document.getElementById('cartSubmit').addEventListener('click', async () => {
 
   // 使用 LINE OA Message 格式，直接帶上訂單內容
   // 手機有 LINE app 會直接喚起 app 並預填訊息，桌機會開 LINE 網頁版
-  const url = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_OA_ID)}/?text=${encodeURIComponent(msg)}`;
+  const url = `https://line.me/R/oaMessage/${encodeURIComponent(LINE_OA_ID)}/?${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 
   // 提示客人：訂單已自動帶入（如果未自動帶入，剪貼簿已有備份）
