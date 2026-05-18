@@ -299,12 +299,12 @@
     background: var(--paper);
     padding: 4.5rem 3rem;
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 3rem;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
     align-items: center;
     position: relative;
     overflow: hidden;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     border-top: 1px solid var(--divider);
     border-bottom: 1px solid var(--divider);
@@ -347,7 +347,7 @@
     margin-bottom: 1.5rem;
   }
   .brand-logo {
-    max-width: 280px;
+    max-width: 380px;
     width: 100%;
     height: auto;
     margin: 0.5rem 0 1rem 0;
@@ -364,7 +364,7 @@
     line-height: 1.9;
     color: rgba(44,44,44,0.66);
     letter-spacing: 0.04em;
-    max-width: 380px;
+    max-width: 520px;
   }
   .cta-kana {
     font-family: 'Cormorant Garamond', serif;
@@ -395,14 +395,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     position: relative;
   }
   .qr-frame {
-    width: 156px;
-    height: 156px;
+    width: 200px;
+    height: 200px;
     border: 1px solid var(--divider);
-    padding: 10px;
+    padding: 12px;
     background: white;
     transition: transform 0.3s ease;
     box-shadow: var(--shadow);
@@ -1202,6 +1202,19 @@
   }
 
   /* ── Responsive ── */
+  /* ── 平板版優化 ── */
+  @media (max-width: 1024px) {
+    .cta-section {
+      gap: 3rem;
+      padding: 4rem 2.5rem;
+    }
+
+    .qr-frame {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
   /* ── 手機版優化 ── */
   @media (max-width: 768px) {
     /* CTA 區域：改為垂直排列，顯示所有內容 */
@@ -1407,18 +1420,6 @@
     <p class="brand-intro-desc">
       歡迎來到魚樂匯在庫清單 🐟<br>
       這裡整理了目前可詢問的觀賞魚、蝦、蟹與水族生體，提供清楚圖片方便您瀏覽挑選。看到喜歡的品項後，直接點擊商品即可跳轉 LINE，並帶出商品資訊，讓您快速詢問與下單。
-    </p>
-  </div>
-
-  <!-- 中間：CTA 文字 -->
-  <div class="reveal">
-    <div class="cta-kana">— follow us on LINE —</div>
-    <h2 class="cta-title">
-      加入官方帳號<br>
-      掌握最新到貨與報價
-    </h2>
-    <p class="cta-desc">
-      掃描右側 QR 或點下方按鈕，加入 @joyfulfish。挑好商品後直接從購物車一鍵送單，我們會在 LINE 為您確認貨況。
     </p>
   </div>
 
