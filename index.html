@@ -1148,15 +1148,31 @@
   /* ── Responsive ── */
   /* ── 手機版優化 ── */
   @media (max-width: 768px) {
-    /* CTA 區域：隱藏左側品牌介紹，保持橫式兩欄 */
+    /* CTA 區域：改為垂直排列，顯示所有內容 */
     .cta-section {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       padding: 3rem 1.5rem;
-      gap: 2rem;
+      gap: 2.5rem;
+      text-align: center;
     }
 
     .brand-intro {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .brand-logo {
+      max-width: 240px;
+    }
+
+    .brand-intro-desc {
+      max-width: 100%;
+      font-size: 0.88rem;
+    }
+
+    .qr-wrap {
+      order: 3;
     }
 
     .cta-title {
@@ -1230,7 +1246,28 @@
   @media (max-width: 480px) {
     .cta-section {
       padding: 2rem 1rem;
-      gap: 1.5rem;
+      gap: 2rem;
+    }
+
+    .brand-logo {
+      max-width: 200px;
+    }
+
+    .brand-intro-kana {
+      font-size: 0.65rem;
+    }
+
+    .brand-intro-desc {
+      font-size: 0.84rem;
+      line-height: 1.8;
+    }
+
+    .brand-intro-divider {
+      width: 50px;
+    }
+
+    .cta-kana {
+      font-size: 0.65rem;
     }
 
     .cta-title {
@@ -1255,6 +1292,9 @@
     .line-btn {
       padding: 0.65rem 1.2rem;
       font-size: 0.72rem;
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
     }
 
     .cards-grid {
