@@ -1019,7 +1019,7 @@
   .cart-note:focus { border-color: var(--navy-light); }
   .cart-total {
     display: flex; align-items: baseline; justify-content: space-between;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
   }
   .cart-total-label {
     font-size: 13px;
@@ -1033,6 +1033,62 @@
     font-weight: 500;
   }
   .cart-total-amt::before { content: 'NT$ '; font-size: 12px; opacity: 0.7; }
+
+  .cart-shipping {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(26,45,90,0.03);
+    border-radius: 4px;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .cart-shipping-label {
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .cart-shipping-amt {
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .cart-shipping-free {
+    color: #06C755;
+    font-weight: 500;
+  }
+  .cart-shipping-progress {
+    font-size: 11px;
+    color: var(--gold-dim);
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .shipping-notice {
+    background: linear-gradient(135deg, rgba(232,216,154,0.1) 0%, rgba(26,45,90,0.05) 100%);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin: 1.5rem auto;
+    max-width: 680px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .shipping-notice-title {
+    font-size: 0.82rem;
+    color: var(--navy);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .shipping-notice-desc {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+  .shipping-notice-highlight {
+    color: var(--navy);
+    font-weight: 500;
+  }
 
   .cart-actions { display: flex; gap: 8px; }
   .btn-submit, .btn-secondary {
@@ -1389,6 +1445,15 @@
   <div class="reveal" style="width:48px;height:1px;background:var(--gold);margin:1.2rem auto 0;"></div>
 </div>
 
+<!-- 運費說明 -->
+<div class="shipping-notice reveal">
+  <div class="shipping-notice-title">🚚 運費說明</div>
+  <div class="shipping-notice-desc">
+    統一運費 <span class="shipping-notice-highlight">NT$ 200</span> ｜
+    單筆訂單滿 <span class="shipping-notice-highlight">NT$ 3,000 免運費</span>
+  </div>
+</div>
+
 <nav class="filter-wrap" id="filterBar">
   <!-- injected by JS -->
 </nav>
@@ -1425,7 +1490,16 @@
   <div class="cart-foot">
     <textarea class="cart-note" id="cartNote" placeholder="姓名／取貨方式／備註（選填）"></textarea>
     <div class="cart-total">
-      <span class="cart-total-label">預估總額</span>
+      <span class="cart-total-label">商品小計</span>
+      <span class="cart-total-amt" id="cartSubtotal">0</span>
+    </div>
+    <div class="cart-shipping" id="cartShipping">
+      <span class="cart-shipping-label">運費</span>
+      <span class="cart-shipping-amt" id="shippingFee">NT$ 200</span>
+    </div>
+    <div class="cart-shipping-progress" id="shippingProgress"></div>
+    <div class="cart-total" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--divider);">
+      <span class="cart-total-label">總計</span>
       <span class="cart-total-amt" id="cartTotal">0</span>
     </div>
     <div class="cart-actions">
@@ -1938,8 +2012,22 @@ function saveCart() {
 function cartCount() {
   return Object.values(cart).reduce((s, it) => s + it.qty, 0);
 }
-function cartTotal() {
+// 運費設定
+const SHIPPING_FEE = 200;
+const FREE_SHIPPING_THRESHOLD = 3000;
+
+function cartSubtotal() {
   return Object.values(cart).reduce((s, it) => s + it.qty * it.price, 0);
+}
+
+function cartShipping(subtotal) {
+  return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+}
+
+function cartTotal() {
+  const subtotal = cartSubtotal();
+  const shipping = cartShipping(subtotal);
+  return subtotal + shipping;
 }
 
 function refreshFab() {
@@ -1966,6 +2054,10 @@ function refreshAddedBadges() {
 function renderCart() {
   const list = document.getElementById('cartList');
   const items = Object.entries(cart);
+  const subtotal = cartSubtotal();
+  const shipping = cartShipping(subtotal);
+  const total = cartTotal();
+
   if (!items.length) {
     list.innerHTML = `
       <div class="cart-empty">
@@ -1989,7 +2081,30 @@ function renderCart() {
         <div class="cart-item-sub">${(it.qty * it.price).toLocaleString()}</div>
       </div>`).join('');
   }
-  document.getElementById('cartTotal').textContent = cartTotal().toLocaleString();
+
+  // 更新金額顯示
+  document.getElementById('cartSubtotal').textContent = subtotal.toLocaleString();
+  document.getElementById('cartTotal').textContent = total.toLocaleString();
+
+  // 更新運費顯示
+  const shippingFeeEl = document.getElementById('shippingFee');
+  const shippingProgressEl = document.getElementById('shippingProgress');
+
+  if (items.length === 0) {
+    shippingFeeEl.innerHTML = 'NT$ 200';
+    shippingFeeEl.className = 'cart-shipping-amt';
+    shippingProgressEl.textContent = '';
+  } else if (shipping === 0) {
+    shippingFeeEl.innerHTML = '免運費 🎉';
+    shippingFeeEl.className = 'cart-shipping-free';
+    shippingProgressEl.textContent = '';
+  } else {
+    shippingFeeEl.innerHTML = 'NT$ 200';
+    shippingFeeEl.className = 'cart-shipping-amt';
+    const diff = FREE_SHIPPING_THRESHOLD - subtotal;
+    shippingProgressEl.textContent = `再消費 NT$ ${diff.toLocaleString()} 即可免運`;
+  }
+
   document.getElementById('cartSubmit').disabled = items.length === 0;
 }
 
@@ -2065,6 +2180,10 @@ document.getElementById('cartClear').addEventListener('click', () => {
 function buildOrderMessage() {
   const items = Object.values(cart);
   if (!items.length) return '';
+  const subtotal = cartSubtotal();
+  const shipping = cartShipping(subtotal);
+  const total = cartTotal();
+
   const lines = [];
   lines.push('【魚樂匯 訂單】');
   lines.push('— — — — — — — — —');
@@ -2074,7 +2193,13 @@ function buildOrderMessage() {
     lines.push(`   NT$ ${it.price.toLocaleString()} → 小計 NT$ ${(it.qty * it.price).toLocaleString()}`);
   });
   lines.push('— — — — — — — — —');
-  lines.push(`預估總額：NT$ ${cartTotal().toLocaleString()}`);
+  lines.push(`商品小計：NT$ ${subtotal.toLocaleString()}`);
+  if (shipping === 0) {
+    lines.push(`運費：免運費 🎉`);
+  } else {
+    lines.push(`運費：NT$ ${shipping.toLocaleString()}`);
+  }
+  lines.push(`總計：NT$ ${total.toLocaleString()}`);
   const note = document.getElementById('cartNote').value.trim();
   if (note) {
     lines.push('');
@@ -2082,6 +2207,7 @@ function buildOrderMessage() {
     lines.push(note);
   }
   lines.push('');
+  lines.push('💡 單筆訂單滿 NT$ 3,000 免運費');
   lines.push('（最終以店家確認貨況／價格為準）');
   return lines.join('\n');
 }
