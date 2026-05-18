@@ -346,6 +346,13 @@
     letter-spacing: 0.2em;
     margin-bottom: 1.5rem;
   }
+  .brand-logo {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    margin: 0.5rem 0 1rem 0;
+    display: block;
+  }
   .brand-intro-divider {
     width: 60px;
     height: 1px;
@@ -1299,11 +1306,11 @@
   <!-- 左側：品牌介紹 -->
   <div class="brand-intro reveal">
     <div class="brand-intro-kana">— aquatic life & joy —</div>
-    <h2 class="brand-intro-title">魚樂匯</h2>
-    <div class="brand-intro-subtitle">Joyful Fish</div>
+    <img src="logo.png" alt="魚樂匯 Joyful Fish" class="brand-logo">
     <div class="brand-intro-divider"></div>
     <p class="brand-intro-desc">
-      從產地嚴選每一隻健康個體，為水族愛好者帶來有質經典並陳的觀賞魚蝦蟹。挑選您喜愛的，傳到 LINE，與我們慢慢聊。
+      歡迎來到魚樂匯在庫清單 🐟<br>
+      這裡整理了目前可詢問的觀賞魚、蝦、蟹與水族生體，提供清楚圖片方便您瀏覽挑選。看到喜歡的品項後，直接點擊商品即可跳轉 LINE，並帶出商品資訊，讓您快速詢問與下單。
     </p>
   </div>
 
@@ -1317,9 +1324,6 @@
     <p class="cta-desc">
       掃描右側 QR 或點下方按鈕，加入 @joyfulfish。挑好商品後直接從購物車一鍵送單，我們會在 LINE 為您確認貨況。
     </p>
-    <a class="line-btn" href="https://line.me/R/ti/p/@joyfulfish" target="_blank" rel="noopener">
-      加入 @joyfulfish &nbsp;→
-    </a>
   </div>
 
   <!-- 右側：QR Code -->
@@ -1328,6 +1332,9 @@
       <img src="line_qrcode.png" alt="掃描加入 LINE 官方帳號">
     </div>
     <div class="qr-label">Scan to add</div>
+    <a class="line-btn" href="https://line.me/R/ti/p/@joyfulfish" target="_blank" rel="noopener">
+      加入 @joyfulfish &nbsp;→
+    </a>
   </div>
 </section>
 
@@ -1588,6 +1595,8 @@ const RAW = [
   {cat:"其他魚類",name:"巧克力象鼻龍",size:"20~22",stock:4,price:2700}
 ,
   {cat:"汽水魚",name:"明多羅龍口鰻",size:"15~20",stock:33,price:1440}
+,
+  {cat:"鰍類",name:"卡提腹吸鰍",size:"5",stock:1,price:6000}
 ];
 
 // Category icons
