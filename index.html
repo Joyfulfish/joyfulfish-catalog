@@ -1896,12 +1896,23 @@ function buildImageCandidates(name) {
   const list = [];
   const explicit = IMG_MAP[name];
   if (explicit) list.push(IMG_BASE + encodeURI(explicit));
-  const enc = encodeURIComponent(name);
+
+  // 嘗試原始名稱和括號變體（全形 ↔ 半形）
+  const nameVariants = [
+    name,
+    name.replace(/（/g, '(').replace(/）/g, ')'),  // 全形 → 半形
+    name.replace(/\(/g, '（').replace(/\)/g, '）')   // 半形 → 全形
+  ];
+
   const exts = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'];
   const suffixes = ['', '1', '2', '_2'];
-  for (const sfx of suffixes) {
-    for (const ext of exts) {
-      list.push(`${IMG_BASE}${enc}${sfx}${ext}`);
+
+  for (const variant of nameVariants) {
+    const enc = encodeURIComponent(variant);
+    for (const sfx of suffixes) {
+      for (const ext of exts) {
+        list.push(`${IMG_BASE}${enc}${sfx}${ext}`);
+      }
     }
   }
   return [...new Set(list)];
