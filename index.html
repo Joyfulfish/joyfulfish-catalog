@@ -8,24 +8,24 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <style>
   :root {
-    --navy: #1a2d5a;
-    --navy-light: #2a4070;
-    --navy-dark: #102040;
-    --gold: #e8d89a;
-    --gold-light: #f0e8b8;
-    --gold-dim: #c9b45a;
-    --cream: #faf9f6;
-    --cream-dark: #f4f2ee;
-    --paper: #faf9f6;
-    --mist: #f4f2ee;
-    --ink: #2c2c2c;
-    --ink-light: #4a4a4a;
-    --muted: rgba(44,44,44,0.5);
-    --divider: rgba(26,45,90,0.12);
-    --line-gold: rgba(232,216,154,0.4);
-    --card-bg: #ffffff;
-    --shadow: 0 2px 20px rgba(26,45,90,0.06);
-    --shadow-hover: 0 12px 36px rgba(26,45,90,0.16);
+    --navy: #e8f4f8;
+    --navy-light: #b3d9e8;
+    --navy-dark: #0d2842;
+    --gold: #d4af37;
+    --gold-light: #e8d89a;
+    --gold-dim: #b8963c;
+    --cream: #0a1929;
+    --cream-dark: #1a4d7a;
+    --paper: #0a1929;
+    --mist: #1a4d7a;
+    --ink: #e8f4f8;
+    --ink-light: #b3d9e8;
+    --muted: rgba(139,165,184,0.7);
+    --divider: rgba(212,175,55,0.2);
+    --line-gold: rgba(212,175,55,0.4);
+    --card-bg: #1a4d7a;
+    --shadow: 0 2px 20px rgba(0,0,0,0.3);
+    --shadow-hover: 0 12px 36px rgba(0,0,0,0.5);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +34,7 @@
   body {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 300;
-    background: var(--paper);
+    background: linear-gradient(135deg, #0a1929 0%, #1a4d7a 100%);
     color: var(--ink);
     min-height: 100vh;
     overflow-x: hidden;
@@ -47,15 +47,15 @@
     grid-template-rows: auto 1fr auto;
     position: relative;
     overflow: hidden;
-    background: var(--paper);
+    background: transparent;
   }
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(26,45,90,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,216,154,0.14) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(212,175,55,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,175,55,0.1) 0%, transparent 60%);
     pointer-events: none;
   }
   .wave-bg {
@@ -116,7 +116,7 @@
     font-style: italic;
     font-size: 0.88rem;
     letter-spacing: 0.4em;
-    color: rgba(26,45,90,0.42);
+    color: rgba(212,175,55,0.6);
     margin-bottom: 1.2rem;
   }
   .hero-title {
@@ -133,7 +133,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(1.3rem, 3vw, 2.1rem);
-    color: rgba(26,45,90,0.5);
+    color: rgba(232,216,154,0.7);
     letter-spacing: 0.16em;
     margin-top: 0.3rem;
   }
@@ -146,7 +146,7 @@
   .hero-desc {
     font-size: 0.92rem;
     line-height: 2;
-    color: rgba(44,44,44,0.66);
+    color: rgba(232,216,154,0.8);
     letter-spacing: 0.04em;
     max-width: 380px;
     font-weight: 300;
@@ -159,21 +159,23 @@
   }
   .tag-chip {
     border: 1px solid var(--divider);
-    padding: 0.35rem 1rem;
-    font-size: 0.74rem;
-    letter-spacing: 0.14em;
-    color: rgba(26,45,90,0.6);
-    border-radius: 2px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    color: rgba(232,216,154,0.7);
+    border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
     background: transparent;
     font-family: inherit;
+    font-weight: 400;
   }
   .tag-chip:hover {
-    background: var(--navy);
-    color: var(--gold);
-    border-color: var(--navy);
-    transform: translateY(-1px);
+    background: var(--gold);
+    color: var(--navy-dark);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212,175,55,0.3);
   }
 
   /* 圓圈內的游魚 */
@@ -226,12 +228,12 @@
   /* Remove blue background and keep gold fish */
   .logo-filter {
     filter:
-      brightness(1.5)
-      contrast(2)
+      brightness(2)
+      contrast(2.5)
       hue-rotate(-15deg)
-      saturate(1.5);
-    mix-blend-mode: darken;
-    opacity: 0.9;
+      saturate(2);
+    mix-blend-mode: screen;
+    opacity: 1;
   }
   .fish-svg-group {
     animation: fishFloat 6s ease-in-out infinite;
@@ -273,7 +275,7 @@
     font-style: italic;
     font-size: 0.72rem;
     letter-spacing: 0.3em;
-    color: rgba(26,45,90,0.35);
+    color: rgba(212,175,55,0.4);
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -291,12 +293,12 @@
     font-style: italic;
     font-size: 0.72rem;
     letter-spacing: 0.28em;
-    color: rgba(26,45,90,0.35);
+    color: rgba(212,175,55,0.4);
   }
 
   /* ── CTA / LINE 加入區（淺色風格） ── */
   .cta-section {
-    background: var(--paper);
+    background: transparent;
     padding: 3.5rem 3rem;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -314,8 +316,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(26,45,90,0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,216,154,0.1) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(212,175,55,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 60%);
     pointer-events: none;
   }
   .brand-intro {
@@ -326,7 +328,7 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(26,45,90,0.42);
+    color: rgba(212,175,55,0.6);
     margin-bottom: 0.7rem;
   }
   .brand-intro-title {
@@ -342,7 +344,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(1.2rem, 2vw, 1.6rem);
-    color: rgba(26,45,90,0.5);
+    color: rgba(232,216,154,0.7);
     letter-spacing: 0.2em;
     margin-bottom: 1.5rem;
   }
@@ -362,7 +364,7 @@
   .brand-intro-desc {
     font-size: 0.88rem;
     line-height: 1.9;
-    color: rgba(44,44,44,0.66);
+    color: rgba(232,216,154,0.8);
     letter-spacing: 0.04em;
     max-width: 520px;
   }
@@ -371,7 +373,7 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(26,45,90,0.42);
+    color: rgba(212,175,55,0.6);
     margin-bottom: 0.9rem;
   }
   .cta-title {
@@ -386,7 +388,7 @@
   .cta-desc {
     font-size: 0.86rem;
     line-height: 2;
-    color: rgba(44,44,44,0.66);
+    color: rgba(232,216,154,0.8);
     letter-spacing: 0.04em;
     max-width: 420px;
     font-weight: 300;
@@ -403,7 +405,7 @@
     height: 200px;
     border: 1px solid var(--divider);
     padding: 12px;
-    background: white;
+    background: var(--card-bg);
     transition: transform 0.3s ease;
     box-shadow: var(--shadow);
   }
@@ -414,29 +416,34 @@
     font-style: italic;
     font-size: 0.74rem;
     letter-spacing: 0.28em;
-    color: rgba(26,45,90,0.42);
+    color: rgba(212,175,55,0.6);
     text-transform: uppercase;
   }
   .line-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
-    border: 1px solid var(--navy);
-    background: transparent;
-    padding: 0.85rem 1.8rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    color: var(--navy);
+    gap: 0.8rem;
+    border: 2px solid var(--gold);
+    background: var(--gold);
+    padding: 12px 28px;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--navy-dark);
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 1.4rem;
+    margin-top: 1.8rem;
     text-decoration: none;
     font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(212,175,55,0.3);
   }
   .line-btn:hover {
-    background: var(--navy);
+    background: transparent;
     color: var(--gold);
-    transform: translateY(-1px);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212,175,55,0.4);
   }
 
   /* 舊類別保留（避免破版） */
@@ -453,7 +460,7 @@
   }
   .line-banner-qr {
     flex-shrink: 0;
-    background: white;
+    background: var(--card-bg);
     padding: 8px;
     border-radius: 8px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.18);
@@ -482,7 +489,7 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(26,45,90,0.4);
+    color: rgba(212,175,55,0.5);
     margin: 0 auto 0.8rem;
     display: flex;
     align-items: center;
@@ -502,7 +509,7 @@
 
   /* ── Filter bar（精品風白底細線） ── */
   .filter-wrap {
-    background: var(--paper);
+    background: transparent;
     padding: 6px 20px 14px;
     display: flex;
     align-items: center;
@@ -517,29 +524,30 @@
 
   .filter-btn {
     flex-shrink: 0;
-    padding: 10px 16px;
+    padding: 14px 24px;
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    color: rgba(26,45,90,0.6);
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(232,216,154,0.7);
     background: transparent;
-    border: 1px solid var(--divider);
-    border-radius: 2px;
+    border: 1.5px solid var(--divider);
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.25s;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     white-space: nowrap;
   }
   .filter-btn:hover {
-    color: var(--navy);
-    border-color: var(--navy);
-    transform: translateY(-1px);
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212,175,55,0.2);
   }
   .filter-btn.active {
     color: var(--navy);
-    background: var(--navy);
-    color: var(--gold);
-    border-color: var(--navy);
+    background: var(--gold);
+    border-color: var(--gold);
+    font-weight: 500;
   }
 
   /* ── Search ── */
@@ -550,18 +558,18 @@
   }
   .search-input {
     width: 100%;
-    padding: 11px 16px 11px 40px;
+    padding: 14px 16px 14px 44px;
     border: 1.5px solid var(--divider);
     border-radius: 6px;
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink);
-    background: white;
+    background: var(--card-bg);
     outline: none;
     transition: border-color 0.2s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7' stroke='%238a7d6a' stroke-width='1.8'/%3E%3Cpath d='M16.5 16.5 21 21' stroke='%238a7d6a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7' stroke='%238a7d6a' stroke-width='1.8'/%3E%3Cpath d='M16.5 16.5 21 21' stroke='%238a7d6a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: 12px center;
+    background-position: 14px center;
   }
   .search-input:focus { border-color: var(--navy-light); }
   .search-input::placeholder { color: var(--muted); }
@@ -594,13 +602,13 @@
   .category-icon { font-size: 18px; }
   .category-name {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--navy);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
     letter-spacing: 0.1em;
   }
   .category-count {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
     background: var(--cream-dark);
     padding: 2px 8px;
@@ -617,34 +625,37 @@
 
   .fish-card {
     background: var(--card-bg);
-    border: 1px solid var(--divider);
-    border-radius: 4px;
+    border: 2px solid rgba(212,175,55,0.4);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
     position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
   }
   .fish-card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-4px);
-    border-color: rgba(232,216,154,0.6);
+    box-shadow: 0 16px 48px rgba(212,175,55,0.3);
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    background: linear-gradient(135deg, #1a4d7a 0%, #2a6ba0 100%);
   }
 
   /* Image placeholder — future images go here */
   .card-img {
     width: 100%;
     height: 220px;
-    background: linear-gradient(135deg, var(--mist) 0%, var(--paper) 100%);
+    background: linear-gradient(135deg, #0d2842 0%, #1a4d7a 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    border-bottom: 2px solid rgba(212,175,55,0.3);
   }
   .card-img::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(26,45,90,0.04) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
     pointer-events: none; /* 不要擋住下方圖片的點擊 */
   }
   .img-placeholder {
@@ -670,47 +681,49 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background: rgba(255,255,255,0.9);
-    border: 1px solid var(--divider);
-    border-radius: 4px;
-    padding: 2px 7px;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    backdrop-filter: blur(4px);
+    background: rgba(26,45,90,0.95);
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(8px);
+    font-weight: 600;
   }
-  .stock-low { color: #b05a2a; border-color: rgba(176,90,42,0.25); background: rgba(255,240,230,0.9); }
-  .stock-high { color: #2a6b3a; border-color: rgba(42,107,58,0.25); background: rgba(230,245,235,0.9); }
+  .stock-low { color: #ff9a56; border-color: #ff9a56; background: rgba(26,45,90,0.95); }
+  .stock-high { color: #5eda7d; border-color: #5eda7d; background: rgba(26,45,90,0.95); }
 
   .card-body { padding: 12px 14px 14px; }
 
   .fish-name {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--ink);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold);
     line-height: 1.4;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .fish-size {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--muted);
     letter-spacing: 0.05em;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .fish-size::before { content: '規格 '; }
   .fish-size::after { content: ' cm'; }
 
   .fish-note {
-    font-size: 14px;
-    color: #e67e22;
-    background: #fff9f5;
-    padding: 8px 12px;
+    font-size: 16px;
+    color: #ffb347;
+    background: rgba(230,130,40,0.15);
+    padding: 10px 14px;
     border-radius: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     line-height: 1.5;
-    border-left: 3px solid #e67e22;
+    border-left: 4px solid #ffb347;
+    font-weight: 400;
   }
 
   .card-footer {
@@ -721,14 +734,14 @@
 
   .price {
     font-family: 'EB Garamond', serif;
-    font-size: 24px;
-    color: var(--navy);
-    font-weight: 500;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 700;
   }
-  .price::before { content: 'NT$'; font-size: 13px; vertical-align: super; margin-right: 1px; opacity: 0.7; }
+  .price::before { content: 'NT$'; font-size: 16px; vertical-align: super; margin-right: 2px; opacity: 0.8; }
 
   .price-note {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--muted);
     letter-spacing: 0.04em;
   }
@@ -750,7 +763,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--paper);
+    background: transparent;
     flex-wrap: wrap;
     gap: 1rem;
   }
@@ -844,7 +857,7 @@
     margin-top: 10px;
     padding: 8px 0;
     border: 1px solid var(--navy);
-    background: white;
+    background: var(--card-bg);
     color: var(--navy);
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 12px;
@@ -935,7 +948,7 @@
     position: fixed;
     top: 0; right: 0; bottom: 0;
     width: min(420px, 100%);
-    background: var(--cream);
+    background: var(--card-bg);
     z-index: 100;
     transform: translateX(100%);
     transition: transform 0.28s ease;
@@ -1000,7 +1013,7 @@
   .qty-btn {
     width: 26px; height: 26px;
     border: 1px solid var(--divider);
-    background: white;
+    background: var(--card-bg);
     color: var(--ink);
     border-radius: 4px;
     cursor: pointer;
@@ -1036,7 +1049,7 @@
 
   .cart-foot {
     padding: 16px 20px 20px;
-    background: white;
+    background: var(--card-bg);
     border-top: 1px solid var(--divider);
   }
   .cart-note {
@@ -1129,11 +1142,12 @@
   .cart-actions { display: flex; gap: 8px; }
   .btn-submit, .btn-secondary {
     flex: 1;
-    padding: 12px 0;
+    padding: 16px 0;
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.18em;
-    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -1141,15 +1155,16 @@
     background: #06C755;
     color: white;
     border: none;
+    font-weight: 600;
   }
-  .btn-submit:hover { background: #05ad4a; }
+  .btn-submit:hover { background: #05ad4a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(6,199,85,0.3); }
   .btn-submit:disabled { background: #c4c4c4; cursor: not-allowed; }
   .btn-secondary {
-    background: white;
+    background: var(--card-bg);
     color: var(--ink-light);
-    border: 1px solid var(--divider);
+    border: 1.5px solid var(--divider);
   }
-  .btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
 
   .toast {
     position: fixed;
@@ -1473,7 +1488,7 @@
 
 <!-- 商品總覽區標題 -->
 <div id="catalogTop" style="padding: 3.5rem 1rem 1.4rem; text-align:center;">
-  <div class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;letter-spacing:0.4em;color:rgba(26,45,90,0.42);margin-bottom:0.8rem;">
+  <div class="reveal" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;letter-spacing:0.4em;color:rgba(212,175,55,0.6);margin-bottom:0.8rem;">
     — current stock —
   </div>
   <h2 class="reveal" style="font-family:'Zen Maru Gothic',sans-serif;font-weight:300;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--navy);letter-spacing:0.12em;">
@@ -1581,7 +1596,7 @@ const RAW = [
 ,
   {cat:"其他魚類",name:"巧克力象鼻龍",size:"20~22",stock:4,price:2700,soldOut:1,note:""}
 ,
-  {cat:"洞穴魚",name:"無眼喀鰍",size:"4~5",stock:4,price:5400,soldOut:0,note:""}
+  {cat:"洞穴魚",name:"無眼喀鰍",size:"4~5",stock:4,price:5400,soldOut:1,note:""}
 ,
   {cat:"美洲慈鯛",name:"關刀寶石",size:"6",stock:60,price:90,soldOut:1,note:""}
 ,
@@ -1591,7 +1606,7 @@ const RAW = [
 ,
   {cat:"燈魚",name:"藍剛果燈",size:"2",stock:50,price:15,soldOut:0,note:"30隻才出貨"}
 ,
-  {cat:"燈魚",name:"超級毒藥",size:"2~3",stock:0,price:360,soldOut:0,note:""}
+  {cat:"燈魚",name:"超級毒藥",size:"2~3",stock:0,price:420,soldOut:0,note:""}
 ,
   {cat:"燈魚",name:"黑箭毒藥",size:"2~3",stock:0,price:240,soldOut:0,note:""}
 ,
@@ -1645,7 +1660,7 @@ const RAW = [
 ,
   {cat:"蝦虎/塘鱧",name:"紫身枝牙蝦虎",size:"3~4",stock:36,price:450,soldOut:1,note:""}
 ,
-  {cat:"蝦虎/塘鱧",name:"菲律賓藍天使",size:"5",stock:17,price:2200,soldOut:0,note:""}
+  {cat:"蝦虎/塘鱧",name:"菲律賓藍天使",size:"5",stock:17,price:2630,soldOut:0,note:""}
 ,
   {cat:"蝦虎/塘鱧",name:"黑鰭枝牙蝦虎",size:"3",stock:260,price:215,soldOut:0,note:""}
 ,
@@ -1679,7 +1694,7 @@ const RAW = [
 ,
   {cat:"蝦虎/塘鱧",name:"葦棲蝦虎",size:"3~5",stock:10,price:180,soldOut:0,note:""}
 ,
-  {cat:"蝦虎/塘鱧",name:"龜紋鯔蝦虎",size:"3~4",stock:41,price:450,soldOut:0,note:""}
+  {cat:"蝦虎/塘鱧",name:"龜紋鯔蝦虎",size:"3~4",stock:41,price:440,soldOut:0,note:""}
 ,
   {cat:"蝦虎/塘鱧",name:"大斑神農吻蝦虎",size:"4~6",stock:1,price:1080,soldOut:1,note:""}
 ,
@@ -1713,13 +1728,13 @@ const RAW = [
 ,
   {cat:"鯉科魚",name:"紅邊鰟鮍",size:"4",stock:30,price:215,soldOut:0,note:""}
 ,
-  {cat:"鯉科魚",name:"越南鱊",size:"6~7",stock:44,price:630,soldOut:0,note:""}
+  {cat:"鯉科魚",name:"越南鱊",size:"6~7",stock:44,price:620,soldOut:0,note:""}
 ,
   {cat:"鯉科魚",name:"麗紋細鯽",size:"2",stock:99,price:110,soldOut:0,note:""}
 ,
-  {cat:"鯉科魚",name:"台灣石賓",size:"4~6",stock:100,price:40,soldOut:0,note:""}
+  {cat:"鯉科魚",name:"台灣石賓",size:"4~6",stock:100,price:40,soldOut:1,note:""}
 ,
-  {cat:"鯉科魚",name:"台灣石賓",size:"6~8",stock:40,price:140,soldOut:0,note:""}
+  {cat:"鯉科魚",name:"台灣石賓",size:"6~8",stock:40,price:140,soldOut:1,note:""}
 ,
   {cat:"鯉科魚",name:"虹彩光唇魚",size:"8~12",stock:9,price:700,soldOut:0,note:""}
 ,
@@ -1727,7 +1742,7 @@ const RAW = [
 ,
   {cat:"蟹",name:"印尼紅蘋果蟹",size:"M",stock:11,price:110,soldOut:1,note:""}
 ,
-  {cat:"蟹",name:"陶瓷娃娃蟹",size:"M",stock:22,price:90,soldOut:0,note:""}
+  {cat:"蟹",name:"陶瓷娃娃蟹",size:"M",stock:22,price:90,soldOut:1,note:""}
 ,
   {cat:"蟹",name:"豹紋啦啦蟹",size:"M",stock:225,price:40,soldOut:0,note:""}
 ,
@@ -1735,7 +1750,7 @@ const RAW = [
 ,
   {cat:"鰍類",name:"牛欄江爬岩鰍",size:"4~5",stock:13,price:500,soldOut:0,note:""}
 ,
-  {cat:"鰍類",name:"平舟原纓口鰍",size:"7~9",stock:47,price:500,soldOut:0,note:""}
+  {cat:"鰍類",name:"平舟原纓口鰍",size:"7~9",stock:47,price:530,soldOut:0,note:""}
 ,
   {cat:"鰍類",name:"廣西秉氏吸鰍",size:"6",stock:22,price:500,soldOut:0,note:""}
 ,
@@ -1743,7 +1758,7 @@ const RAW = [
 ,
   {cat:"鰍類",name:"縱紋原纓口鰍",size:"4~5",stock:9,price:540,soldOut:0,note:""}
 ,
-  {cat:"鰍類",name:"黃果樹爬岩鰍",size:"4~5",stock:14,price:800,soldOut:0,note:""}
+  {cat:"鰍類",name:"黃果樹爬岩鰍",size:"4~5",stock:14,price:970,soldOut:0,note:""}
 ,
   {cat:"鰍類",name:"西昌華吸鰍",size:"6~8",stock:12,price:900,soldOut:0,note:""}
 ,
@@ -1767,21 +1782,39 @@ const RAW = [
 ,
   {cat:"鰍類",name:"短身金沙鰍",size:"7~8",stock:14,price:1500,soldOut:0,note:""}
 ,
-  {cat:"鰍類",name:"越南華吸鰍",size:"4~5",stock:23,price:500,soldOut:0,note:""}
+  {cat:"鰍類",name:"越南華吸鰍",size:"4~5",stock:23,price:620,soldOut:0,note:""}
 ,
-  {cat:"鰍類",name:"電波蛇魚",size:"4~5",stock:60,price:325,soldOut:0,note:""}
+  {cat:"鰍類",name:"電波蛇魚",size:"4~5",stock:60,price:320,soldOut:0,note:""}
 ,
   {cat:"鰍類",name:"伯爵小丑鰍",size:"5",stock:25,price:1440,soldOut:0,note:""}
 ,
-  {cat:"鰍類",name:"疣背小條鰍（翠綠紅尾鰍）",size:"5~7",stock:22,price:680,soldOut:0,note:""}
+  {cat:"鰍類",name:"疣背小條鰍（翠綠紅尾鰍）",size:"5~7",stock:22,price:670,soldOut:0,note:""}
 ,
   {cat:"鰍類",name:"尖頭雲南鰍（尖頭泳鰍）",size:"4",stock:16,price:330,soldOut:1,note:""}
 ,
-  {cat:"鰍類",name:"豹紋雲南鰍（豹紋泳鰍）",size:"4",stock:29,price:330,soldOut:1,note:""}
+  {cat:"鰍類",name:"豹紋雲南鰍（豹紋泳鰍）",size:"4",stock:29,price:320,soldOut:1,note:""}
 ,
   {cat:"鰍類",name:"卡提腹吸鰍",size:"5",stock:0,price:6300,soldOut:1,note:""}
 ,
-  {cat:"鰍類",name:"金斑馬爬岩鰍",size:"4~5",stock:0,price:800,soldOut:0,note:""}
+  {cat:"鰍類",name:"金斑馬爬岩鰍",size:"4~5",stock:0,price:800,soldOut:1,note:""}
+,
+  {cat:"鰍類",name:"金錢豹吸鰍",size:"4~5",stock:10,price:420,soldOut:0,note:""}
+,
+  {cat:"鰍類",name:"越南小華爬岩鰍",size:"5~6",stock:10,price:420,soldOut:0,note:""}
+,
+  {cat:"迷鰓魚",name:"迷鬥子",size:"2~2.5",stock:10,price:1230,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"桂花吻蝦虎",size:"4",stock:10,price:420,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"斷線吻蝦虎",size:"3~4",stock:10,price:420,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"雲南血喉吻蝦虎－公",size:"4~5",stock:10,price:630,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"成都吻蝦虎",size:"7",stock:10,price:530,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"越南龍吻蝦虎",size:"4",stock:10,price:1230,soldOut:0,note:""}
+,
+  {cat:"蝦虎/塘鱧",name:"高帆雀斑吻蝦虎",size:"4",stock:10,price:420,soldOut:0,note:""}
 ];
 
 // Category icons
@@ -1861,6 +1894,20 @@ const IMG_MAP = {
   "黑寶石鯽": "黑寶石鯽1.jpg",
   "點帶米蝦": "點帶米蝦.jpg",
   "龜紋鯔蝦虎": "龜紋鯔蝦虎1.jpg",
+  "七彩叉尾燕子": "七彩叉尾燕子1.png",
+  "四川吻蝦虎": "四川吻蝦虎1.jpg",
+  "彩虹星鑽": "彩虹星鑽1.jpg",
+  "橘色霓虹燕子": "橘色霓虹燕子1.jpg",
+  "檸檬太平洋燕子": "檸檬太平洋燕子1.png",
+  "淺紅枝牙蝦虎": "淺紅枝牙蝦虎1.jpg",
+  "甜心檸檬燈": "甜心檸檬燈1.png",
+  "蘇門天使": "蘇門天使1.jpg",
+  "裕藍枝牙蝦虎": "裕藍枝牙蝦虎1.jpg",
+  "賽魯伊天使": "賽魯伊天使1.jpg",
+  "超級毒藥": "超級毒藥1.jpg",
+  "金喉迷宮吻蝦虎－公": "金喉迷宮吻蝦虎－公1.jpg",
+  "金斑馬爬岩鰍": "金斑馬爬岩鰍1.jpg",
+  "黑箭毒藥": "黑箭毒藥1.jpg"
 };
 
 // Group by category — preserve insertion order
