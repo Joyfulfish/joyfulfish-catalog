@@ -8,24 +8,22 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <style>
   :root {
-    --navy: #e8f4f8;
-    --navy-light: #b3d9e8;
-    --navy-dark: #0d2842;
-    --gold: #d4af37;
-    --gold-light: #e8d89a;
-    --gold-dim: #b8963c;
-    --cream: #0a1929;
-    --cream-dark: #1a4d7a;
-    --paper: #0a1929;
-    --mist: #1a4d7a;
-    --ink: #e8f4f8;
-    --ink-light: #b3d9e8;
-    --muted: rgba(139,165,184,0.7);
-    --divider: rgba(212,175,55,0.2);
-    --line-gold: rgba(212,175,55,0.4);
-    --card-bg: #1a4d7a;
-    --shadow: 0 2px 20px rgba(0,0,0,0.3);
-    --shadow-hover: 0 12px 36px rgba(0,0,0,0.5);
+    /* 日式現代風 - 淺色系 */
+    --bg-primary: #faf8f3;
+    --bg-secondary: #f5f3ee;
+    --surface: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --text-muted: #a0aec0;
+    --accent: #4a6fa5;
+    --accent-light: #6b8fc6;
+    --accent-dim: #3a5a8a;
+    --border: #e2e8f0;
+    --border-light: #edf2f7;
+    --divider: rgba(74,111,165,0.12);
+    --shadow-sm: 0 2px 8px rgba(45,55,72,0.04);
+    --shadow-md: 0 4px 16px rgba(45,55,72,0.08);
+    --shadow-lg: 0 8px 24px rgba(45,55,72,0.12);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,8 +32,8 @@
   body {
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 300;
-    background: linear-gradient(135deg, #0a1929 0%, #1a4d7a 100%);
-    color: var(--ink);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -54,8 +52,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(212,175,55,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,175,55,0.1) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(74,111,165,0.03) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(74,111,165,0.04) 0%, transparent 60%);
     pointer-events: none;
   }
   .wave-bg {
@@ -81,17 +79,17 @@
   }
   .brand-name {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1rem;
     letter-spacing: 0.22em;
-    color: var(--navy);
+    color: var(--text-primary);
   }
   .nav-line {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.28em;
-    color: var(--navy);
+    color: var(--text-secondary);
     text-transform: uppercase;
   }
 
@@ -116,15 +114,16 @@
     font-style: italic;
     font-size: 0.88rem;
     letter-spacing: 0.4em;
-    color: rgba(212,175,55,0.6);
+    color: var(--accent);
+    opacity: 0.7;
     margin-bottom: 1.2rem;
   }
   .hero-title {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(2.6rem, 6vw, 4.6rem);
     line-height: 1.15;
-    color: var(--navy);
+    color: var(--text-primary);
     letter-spacing: 0.05em;
   }
   .hero-title span {
@@ -133,20 +132,20 @@
     font-weight: 300;
     font-style: italic;
     font-size: clamp(1.3rem, 3vw, 2.1rem);
-    color: rgba(232,216,154,0.7);
+    color: var(--text-secondary);
     letter-spacing: 0.16em;
     margin-top: 0.3rem;
   }
   .hero-divider {
     width: 48px;
     height: 1px;
-    background: var(--gold);
+    background: var(--accent);
     margin: 1.8rem 0;
   }
   .hero-desc {
     font-size: 0.92rem;
     line-height: 2;
-    color: rgba(232,216,154,0.8);
+    color: var(--text-secondary);
     letter-spacing: 0.04em;
     max-width: 380px;
     font-weight: 300;
@@ -158,24 +157,25 @@
     margin-top: 1.8rem;
   }
   .tag-chip {
-    border: 1px solid var(--divider);
+    border: 1px solid var(--border);
     padding: 0.5rem 1.2rem;
     font-size: 0.9rem;
     letter-spacing: 0.12em;
-    color: rgba(232,216,154,0.7);
-    border-radius: 4px;
+    color: var(--text-secondary);
+    border-radius: 10px;
     transition: all 0.3s ease;
     cursor: pointer;
-    background: transparent;
+    background: var(--surface);
     font-family: inherit;
     font-weight: 400;
+    box-shadow: var(--shadow-sm);
   }
   .tag-chip:hover {
-    background: var(--gold);
-    color: var(--navy-dark);
-    border-color: var(--gold);
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+    box-shadow: var(--shadow-md);
   }
 
   /* 圓圈內的游魚 */
@@ -202,7 +202,8 @@
     position: absolute;
     inset: -12px;
     border-radius: 50%;
-    border: 1px solid var(--line-gold);
+    border: 1px solid var(--accent);
+    opacity: 0.3;
     animation: ringPulse 4s ease-in-out infinite;
   }
   .fish-circle::after {
@@ -210,7 +211,8 @@
     position: absolute;
     inset: -24px;
     border-radius: 50%;
-    border: 1px solid rgba(232,216,154,0.18);
+    border: 1px solid var(--accent);
+    opacity: 0.15;
     animation: ringPulse 4s ease-in-out 0.5s infinite;
   }
   @keyframes ringPulse {
@@ -225,15 +227,15 @@
     position: relative;
     z-index: 2;
   }
-  /* Remove blue background and keep gold fish */
+  /* 日式風格 - 柔和濾鏡 */
   .logo-filter {
     filter:
-      brightness(2)
-      contrast(2.5)
-      hue-rotate(-15deg)
-      saturate(2);
-    mix-blend-mode: screen;
-    opacity: 1;
+      brightness(1.1)
+      contrast(1.2)
+      hue-rotate(180deg)
+      saturate(0.8);
+    mix-blend-mode: multiply;
+    opacity: 0.85;
   }
   .fish-svg-group {
     animation: fishFloat 6s ease-in-out infinite;
@@ -249,8 +251,8 @@
     position: absolute;
     bottom: 30px;
     border-radius: 50%;
-    background: rgba(232,216,154,0.35);
-    border: 1px solid rgba(232,216,154,0.5);
+    background: rgba(74,111,165,0.15);
+    border: 1px solid rgba(74,111,165,0.25);
     animation: bubbleUp linear infinite;
     pointer-events: none;
   }
@@ -275,7 +277,7 @@
     font-style: italic;
     font-size: 0.72rem;
     letter-spacing: 0.3em;
-    color: rgba(212,175,55,0.4);
+    color: var(--text-muted);
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -285,7 +287,7 @@
     content: '';
     width: 40px;
     height: 1px;
-    background: rgba(26,45,90,0.2);
+    background: var(--border);
     display: inline-block;
   }
   .hero-meta {
@@ -293,7 +295,7 @@
     font-style: italic;
     font-size: 0.72rem;
     letter-spacing: 0.28em;
-    color: rgba(212,175,55,0.4);
+    color: var(--text-muted);
   }
 
   /* ── CTA / LINE 加入區（淺色風格） ── */
@@ -316,8 +318,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(212,175,55,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 80% at 75% 50%, rgba(74,111,165,0.02) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(74,111,165,0.03) 0%, transparent 60%);
     pointer-events: none;
   }
   .brand-intro {
@@ -328,14 +330,15 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(212,175,55,0.6);
+    color: var(--accent);
+    opacity: 0.7;
     margin-bottom: 0.7rem;
   }
   .brand-intro-title {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--navy);
+    color: var(--text-primary);
     letter-spacing: 0.08em;
     line-height: 1.3;
     margin-bottom: 0.5rem;
@@ -344,7 +347,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(1.2rem, 2vw, 1.6rem);
-    color: rgba(232,216,154,0.7);
+    color: var(--text-secondary);
     letter-spacing: 0.2em;
     margin-bottom: 1.5rem;
   }
@@ -358,13 +361,13 @@
   .brand-intro-divider {
     width: 60px;
     height: 1px;
-    background: var(--gold);
+    background: var(--accent);
     margin: 0.8rem 0;
   }
   .brand-intro-desc {
     font-size: 0.88rem;
     line-height: 1.9;
-    color: rgba(232,216,154,0.8);
+    color: var(--text-secondary);
     letter-spacing: 0.04em;
     max-width: 520px;
   }
@@ -373,14 +376,15 @@
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(212,175,55,0.6);
+    color: var(--accent);
+    opacity: 0.7;
     margin-bottom: 0.9rem;
   }
   .cta-title {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: clamp(1.4rem, 3vw, 2.2rem);
-    color: var(--navy);
+    color: var(--text-primary);
     letter-spacing: 0.1em;
     line-height: 1.4;
     margin-bottom: 1.2rem;
@@ -388,7 +392,7 @@
   .cta-desc {
     font-size: 0.86rem;
     line-height: 2;
-    color: rgba(232,216,154,0.8);
+    color: var(--text-secondary);
     letter-spacing: 0.04em;
     max-width: 420px;
     font-weight: 300;
@@ -403,47 +407,49 @@
   .qr-frame {
     width: 200px;
     height: 200px;
-    border: 1px solid var(--divider);
+    border: 1px solid var(--border);
     padding: 12px;
-    background: var(--card-bg);
+    background: var(--surface);
     transition: transform 0.3s ease;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-md);
+    border-radius: 10px;
   }
-  .qr-frame:hover { transform: scale(1.04); box-shadow: var(--shadow-hover); }
+  .qr-frame:hover { transform: scale(1.04); box-shadow: var(--shadow-lg); }
   .qr-frame img { width: 100%; height: 100%; object-fit: contain; }
   .qr-label {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.74rem;
     letter-spacing: 0.28em;
-    color: rgba(212,175,55,0.6);
+    color: var(--accent);
+    opacity: 0.7;
     text-transform: uppercase;
   }
   .line-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    border: 2px solid var(--gold);
-    background: var(--gold);
+    border: 2px solid var(--accent);
+    background: var(--accent);
     padding: 12px 28px;
     font-size: 1rem;
     letter-spacing: 0.12em;
-    color: var(--navy-dark);
+    color: #ffffff;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1.8rem;
     text-decoration: none;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 500;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
   }
   .line-btn:hover {
-    background: transparent;
-    color: var(--gold);
-    border-color: var(--gold);
+    background: var(--accent-dim);
+    color: #ffffff;
+    border-color: var(--accent-dim);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212,175,55,0.4);
+    box-shadow: var(--shadow-lg);
   }
 
   /* 舊類別保留（避免破版） */
@@ -460,10 +466,10 @@
   }
   .line-banner-qr {
     flex-shrink: 0;
-    background: var(--card-bg);
+    background: var(--surface);
     padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
   }
   .line-banner-qr img {
     display: block;
@@ -473,7 +479,7 @@
   .line-banner-qr-label {
     text-align: center;
     font-size: 10px;
-    color: var(--ink-light);
+    color: var(--text-secondary);
     margin-top: 4px;
     letter-spacing: 0.08em;
     font-family: 'Zen Maru Gothic', sans-serif;
@@ -483,13 +489,13 @@
     .line-banner-qr img { width: 88px; height: 88px; }
   }
 
-  /* ── Section Label（精品風小標） ── */
+  /* ── Section Label（日式風小標） ── */
   .section-label {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.4em;
-    color: rgba(212,175,55,0.5);
+    color: var(--text-muted);
     margin: 0 auto 0.8rem;
     display: flex;
     align-items: center;
@@ -503,7 +509,7 @@
     content: '';
     width: 28px;
     height: 1px;
-    background: var(--gold);
+    background: var(--border);
     display: inline-block;
   }
 
@@ -528,25 +534,26 @@
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: rgba(232,216,154,0.7);
-    background: transparent;
-    border: 1.5px solid var(--divider);
-    border-radius: 4px;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.25s;
     letter-spacing: 0.06em;
     white-space: nowrap;
+    box-shadow: var(--shadow-sm);
   }
   .filter-btn:hover {
-    color: var(--gold);
-    border-color: var(--gold);
+    color: var(--accent);
+    border-color: var(--accent);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212,175,55,0.2);
+    box-shadow: var(--shadow-md);
   }
   .filter-btn.active {
-    color: var(--navy);
-    background: var(--gold);
-    border-color: var(--gold);
+    color: #ffffff;
+    background: var(--accent);
+    border-color: var(--accent);
     font-weight: 500;
   }
 
@@ -559,20 +566,24 @@
   .search-input {
     width: 100%;
     padding: 14px 16px 14px 44px;
-    border: 1.5px solid var(--divider);
-    border-radius: 6px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 16px;
-    color: var(--ink);
-    background: var(--card-bg);
+    color: var(--text-primary);
+    background: var(--surface);
     outline: none;
-    transition: border-color 0.2s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7' stroke='%238a7d6a' stroke-width='1.8'/%3E%3Cpath d='M16.5 16.5 21 21' stroke='%238a7d6a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7' stroke='%234a6fa5' stroke-width='1.8'/%3E%3Cpath d='M16.5 16.5 21 21' stroke='%234a6fa5' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: 14px center;
+    box-shadow: var(--shadow-sm);
   }
-  .search-input:focus { border-color: var(--navy-light); }
-  .search-input::placeholder { color: var(--muted); }
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+  }
+  .search-input::placeholder { color: var(--text-muted); }
 
   /* ── Stats ── */
   .stats-bar {
@@ -581,7 +592,7 @@
     gap: 32px;
     padding: 16px 20px 0;
     font-size: 12px;
-    color: var(--muted);
+    color: var(--text-muted);
     letter-spacing: 0.06em;
   }
   .stats-bar span { display: flex; align-items: center; gap: 5px; }
@@ -604,13 +615,13 @@
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--accent);
     letter-spacing: 0.1em;
   }
   .category-count {
     font-size: 13px;
-    color: var(--muted);
-    background: var(--cream-dark);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
     padding: 2px 8px;
     border-radius: 20px;
     letter-spacing: 0.04em;
@@ -624,43 +635,44 @@
   }
 
   .fish-card {
-    background: var(--card-bg);
-    border: 2px solid rgba(212,175,55,0.4);
-    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
     position: relative;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    box-shadow: var(--shadow-sm);
   }
   .fish-card:hover {
-    box-shadow: 0 16px 48px rgba(212,175,55,0.3);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-8px);
-    border-color: var(--gold);
-    background: linear-gradient(135deg, #1a4d7a 0%, #2a6ba0 100%);
+    border-color: var(--accent);
+    background: var(--surface);
   }
 
   /* Image placeholder — future images go here */
   .card-img {
     width: 100%;
     height: 220px;
-    background: linear-gradient(135deg, #0d2842 0%, #1a4d7a 100%);
+    background: var(--bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    border-bottom: 2px solid rgba(212,175,55,0.3);
+    border-bottom: 1px solid var(--border);
   }
   .card-img::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(74,111,165,0.05) 0%, transparent 70%);
     pointer-events: none; /* 不要擋住下方圖片的點擊 */
   }
   .img-placeholder {
     font-size: 36px;
-    opacity: 0.25;
+    opacity: 0.15;
+    color: var(--text-muted);
     user-select: none;
   }
   /* When an actual <img> is inside .card-img */
@@ -681,18 +693,18 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background: rgba(26,45,90,0.95);
-    border: 2px solid var(--gold);
+    background: rgba(255,255,255,0.95);
+    border: 1px solid var(--accent);
     border-radius: 6px;
     padding: 4px 10px;
     font-size: 11px;
-    color: var(--gold);
+    color: var(--accent);
     letter-spacing: 0.06em;
     backdrop-filter: blur(8px);
     font-weight: 600;
   }
-  .stock-low { color: #ff9a56; border-color: #ff9a56; background: rgba(26,45,90,0.95); }
-  .stock-high { color: #5eda7d; border-color: #5eda7d; background: rgba(26,45,90,0.95); }
+  .stock-low { color: #ff8a65; border-color: #ff8a65; background: rgba(255,255,255,0.95); }
+  .stock-high { color: #7fa88f; border-color: #7fa88f; background: rgba(255,255,255,0.95); }
 
   .card-body { padding: 12px 14px 14px; }
 
@@ -700,14 +712,14 @@
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 24px;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--text-primary);
     line-height: 1.4;
     margin-bottom: 6px;
   }
 
   .fish-size {
     font-size: 18px;
-    color: var(--muted);
+    color: var(--text-secondary);
     letter-spacing: 0.05em;
     margin-bottom: 12px;
   }
@@ -715,15 +727,15 @@
   .fish-size::after { content: ' cm'; }
 
   .fish-note {
-    font-size: 16px;
-    color: #ffb347;
-    background: rgba(230,130,40,0.15);
+    font-size: 17px;
+    color: #e67e22;
+    background: #fff9f5;
     padding: 10px 14px;
     border-radius: 6px;
     margin-bottom: 14px;
     line-height: 1.5;
-    border-left: 4px solid #ffb347;
-    font-weight: 400;
+    border-left: 3px solid #e67e22;
+    font-weight: 500;
   }
 
   .card-footer {
@@ -735,14 +747,14 @@
   .price {
     font-family: 'EB Garamond', serif;
     font-size: 32px;
-    color: var(--gold);
+    color: var(--accent);
     font-weight: 700;
   }
-  .price::before { content: 'NT$'; font-size: 16px; vertical-align: super; margin-right: 2px; opacity: 0.8; }
+  .price::before { content: 'NT$'; font-size: 16px; vertical-align: super; margin-right: 2px; opacity: 0.7; }
 
   .price-note {
     font-size: 12px;
-    color: var(--muted);
+    color: var(--text-muted);
     letter-spacing: 0.04em;
   }
 
@@ -750,11 +762,11 @@
   .no-results {
     text-align: center;
     padding: 60px 20px;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 14px;
     display: none;
   }
-  .no-results-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+  .no-results-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
 
   /* ── Footer（精品風） ── */
   footer {
@@ -769,17 +781,17 @@
   }
   .footer-brand {
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 0.92rem;
     letter-spacing: 0.22em;
-    color: var(--navy);
+    color: var(--text-primary);
   }
   .footer-brand-en {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
-    color: var(--navy);
+    color: var(--text-secondary);
     margin-left: 0.6rem;
   }
   .footer-note {
@@ -787,14 +799,14 @@
     font-style: italic;
     font-size: 0.74rem;
     letter-spacing: 0.16em;
-    color: rgba(44,44,44,0.45);
+    color: var(--text-muted);
   }
   .footer-stats {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 0.92rem;
     letter-spacing: 0.14em;
-    color: rgba(26,45,90,0.38);
+    color: var(--text-muted);
     display: flex;
     gap: 1.2rem;
     align-items: center;
@@ -806,9 +818,9 @@
   }
   .footer-stats .stat-value {
     font-weight: 400;
-    color: var(--gold-dim);
+    color: var(--accent);
   }
-  footer a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); transition: opacity 0.2s; }
+  footer a { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--accent); transition: opacity 0.2s; }
   footer a:hover { opacity: 0.7; }
 
   /* ── Scroll reveal & 卡片進場動畫 ── */
@@ -856,21 +868,21 @@
     width: 100%;
     margin-top: 10px;
     padding: 8px 0;
-    border: 1px solid var(--navy);
-    background: var(--card-bg);
-    color: var(--navy);
+    border: 1px solid var(--accent);
+    background: var(--surface);
+    color: var(--accent);
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 12px;
     letter-spacing: 0.12em;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.18s;
   }
-  .add-btn:hover { background: var(--navy); color: var(--gold-light); }
+  .add-btn:hover { background: var(--accent); color: #ffffff; }
   .add-btn.added {
-    background: var(--gold);
-    border-color: var(--gold-dim);
-    color: var(--navy-dark);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
   }
 
   /* ── Sold out display mode ── */
@@ -890,11 +902,11 @@
   .sold-out-badge {
     display: inline-block;
     padding: 4px 12px;
-    background: #e0e0e0;
-    color: #666;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
     font-size: 13px;
     font-weight: 500;
-    border-radius: 4px;
+    border-radius: 6px;
     letter-spacing: 0.08em;
   }
 
@@ -906,19 +918,22 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: var(--navy);
-    color: var(--gold);
-    border: 2px solid var(--gold-dim);
-    box-shadow: 0 6px 22px rgba(26,58,107,0.35);
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    box-shadow: var(--shadow-lg);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     z-index: 50;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .cart-fab:hover { transform: translateY(-2px); }
+  .cart-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(74,111,165,0.3);
+  }
   .cart-fab .cart-count {
     position: absolute;
     top: -4px;
@@ -940,28 +955,28 @@
   /* ── Cart drawer ── */
   .cart-backdrop {
     position: fixed; inset: 0;
-    background: rgba(16,40,71,0.5);
+    background: rgba(45,55,72,0.4);
     z-index: 90; display: none;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(4px);
   }
   .cart-drawer {
     position: fixed;
     top: 0; right: 0; bottom: 0;
     width: min(420px, 100%);
-    background: var(--card-bg);
+    background: var(--surface);
     z-index: 100;
     transform: translateX(100%);
     transition: transform 0.28s ease;
     display: flex; flex-direction: column;
-    box-shadow: -8px 0 30px rgba(0,0,0,0.18);
+    box-shadow: -8px 0 30px rgba(45,55,72,0.15);
   }
   .cart-drawer.open { transform: translateX(0); }
   .cart-backdrop.open { display: block; }
 
   .cart-header {
     padding: 18px 20px;
-    background: var(--navy);
-    color: var(--gold);
+    background: var(--accent);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -973,20 +988,22 @@
   }
   .cart-close {
     background: none; border: none;
-    color: var(--gold);
+    color: #ffffff;
     font-size: 22px;
     cursor: pointer;
     line-height: 1;
+    opacity: 0.9;
   }
+  .cart-close:hover { opacity: 1; }
 
   .cart-list { flex: 1; overflow-y: auto; padding: 8px 0; }
   .cart-empty {
     text-align: center;
     padding: 60px 20px;
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 13px;
   }
-  .cart-empty-icon { font-size: 40px; opacity: 0.3; margin-bottom: 10px; }
+  .cart-empty-icon { font-size: 40px; opacity: 0.2; margin-bottom: 10px; color: var(--text-muted); }
 
   .cart-item {
     padding: 12px 20px;
@@ -997,14 +1014,14 @@
     align-items: center;
   }
   .cart-item-info { line-height: 1.4; }
-  .cart-item-name { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .cart-item-name { font-size: 14px; color: var(--text-primary); font-weight: 500; }
   .cart-item-size {
-    font-size: 11px; color: var(--muted);
+    font-size: 11px; color: var(--text-secondary);
     letter-spacing: 0.05em; margin-top: 2px;
   }
   .cart-item-unit {
     font-family: 'EB Garamond', serif;
-    font-size: 12px; color: var(--muted);
+    font-size: 12px; color: var(--text-secondary);
     margin-top: 2px;
   }
   .cart-item-ctrl {
@@ -1012,26 +1029,27 @@
   }
   .qty-btn {
     width: 26px; height: 26px;
-    border: 1px solid var(--divider);
-    background: var(--card-bg);
-    color: var(--ink);
-    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-primary);
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     line-height: 1;
   }
-  .qty-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .qty-btn:hover { border-color: var(--accent); color: var(--accent); }
   .qty-num {
     min-width: 26px;
     text-align: center;
     font-family: 'EB Garamond', serif;
     font-size: 15px;
+    color: var(--text-primary);
   }
   .cart-item-sub {
     grid-column: 2;
     font-family: 'EB Garamond', serif;
     font-size: 15px;
-    color: var(--navy);
+    color: var(--accent);
     text-align: right;
   }
   .cart-item-sub::before { content: 'NT$ '; font-size: 10px; opacity: 0.7; }
@@ -1049,36 +1067,37 @@
 
   .cart-foot {
     padding: 16px 20px 20px;
-    background: var(--card-bg);
-    border-top: 1px solid var(--divider);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
   }
   .cart-note {
     width: 100%;
     padding: 9px 12px;
-    border: 1px solid var(--divider);
-    border-radius: 5px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-size: 13px;
-    color: var(--ink);
+    color: var(--text-primary);
+    background: var(--bg-secondary);
     outline: none;
     resize: vertical;
     min-height: 56px;
     margin-bottom: 12px;
   }
-  .cart-note:focus { border-color: var(--navy-light); }
+  .cart-note:focus { border-color: var(--accent); }
   .cart-total {
     display: flex; align-items: baseline; justify-content: space-between;
     margin-bottom: 8px;
   }
   .cart-total-label {
     font-size: 13px;
-    color: var(--muted);
+    color: var(--text-secondary);
     letter-spacing: 0.1em;
   }
   .cart-total-amt {
     font-family: 'EB Garamond', serif;
     font-size: 26px;
-    color: var(--navy);
+    color: var(--accent);
     font-weight: 500;
   }
   .cart-total-amt::before { content: 'NT$ '; font-size: 12px; opacity: 0.7; }
@@ -1088,54 +1107,54 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 12px;
-    background: rgba(26,45,90,0.03);
-    border-radius: 4px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
     margin-bottom: 14px;
     font-size: 13px;
   }
   .cart-shipping-label {
-    color: var(--muted);
+    color: var(--text-secondary);
     letter-spacing: 0.08em;
   }
   .cart-shipping-amt {
     font-weight: 500;
-    color: var(--navy);
+    color: var(--accent);
   }
   .cart-shipping-free {
-    color: #06C755;
+    color: #7fa88f;
     font-weight: 500;
   }
   .cart-shipping-progress {
     font-size: 11px;
-    color: var(--gold-dim);
+    color: var(--accent);
     margin-top: 4px;
     text-align: center;
   }
 
   .shipping-notice {
-    background: linear-gradient(135deg, rgba(232,216,154,0.1) 0%, rgba(26,45,90,0.05) 100%);
-    border-left: 3px solid var(--gold);
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent);
     padding: 14px 18px;
     margin: 1.5rem auto;
     max-width: 680px;
-    border-radius: 4px;
+    border-radius: 8px;
     text-align: center;
   }
   .shipping-notice-title {
     font-size: 0.82rem;
-    color: var(--navy);
+    color: var(--accent);
     font-weight: 500;
     letter-spacing: 0.1em;
     margin-bottom: 6px;
   }
   .shipping-notice-desc {
     font-size: 0.78rem;
-    color: var(--ink-light);
+    color: var(--text-secondary);
     line-height: 1.6;
     letter-spacing: 0.04em;
   }
   .shipping-notice-highlight {
-    color: var(--navy);
+    color: var(--accent);
     font-weight: 500;
   }
 
@@ -1147,7 +1166,7 @@
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 0.12em;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -1157,21 +1176,21 @@
     border: none;
     font-weight: 600;
   }
-  .btn-submit:hover { background: #05ad4a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(6,199,85,0.3); }
-  .btn-submit:disabled { background: #c4c4c4; cursor: not-allowed; }
+  .btn-submit:hover { background: #05ad4a; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-submit:disabled { background: #cbd5e0; cursor: not-allowed; }
   .btn-secondary {
-    background: var(--card-bg);
-    color: var(--ink-light);
-    border: 1.5px solid var(--divider);
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
   }
-  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
   .toast {
     position: fixed;
     left: 50%; bottom: 100px;
     transform: translateX(-50%) translateY(20px);
-    background: var(--navy-dark);
-    color: var(--gold-light);
+    background: var(--text-primary);
+    color: #ffffff;
     padding: 10px 18px;
     border-radius: 22px;
     font-size: 13px;
@@ -1180,7 +1199,7 @@
     pointer-events: none;
     transition: all 0.25s ease;
     z-index: 200;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    box-shadow: var(--shadow-lg);
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
@@ -1188,13 +1207,13 @@
   .card-img img { cursor: zoom-in; }
   .lightbox {
     position: fixed; inset: 0;
-    background: rgba(10,20,40,0.92);
+    background: rgba(45,55,72,0.95);
     z-index: 150;
     display: none;
     align-items: center;
     justify-content: center;
     padding: 40px 20px 80px;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     animation: lbFadeIn 0.2s ease;
   }
   .lightbox.open { display: flex; }
