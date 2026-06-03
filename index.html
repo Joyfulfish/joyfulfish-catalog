@@ -2335,9 +2335,11 @@ const FREE_SHIPPING_THRESHOLD = 3000;
 
 function cartSubtotal() {
   return Object.values(cart).reduce((s, it) => {
+    // 兼容舊數據：即使沒有 fixedQuantity，也檢查是否為固定組合
+    const isFixed = it.fixedQuantity || (it.moq && it.moq > 1 && it.moq === it.qty);
     // 固定組合商品：價格已經是總價，不乘以數量
     // 一般商品：單價 × 數量
-    const itemTotal = it.fixedQuantity ? it.price : (it.qty * it.price);
+    const itemTotal = isFixed ? it.price : (it.qty * it.price);
     return s + itemTotal;
   }, 0);
 }
@@ -2388,7 +2390,9 @@ function renderCart() {
       </div>`;
   } else {
     list.innerHTML = items.map(([k, it]) => {
-      const isFixed = it.fixedQuantity;
+      // 兼容舊數據：即使沒有 fixedQuantity，也檢查商品是否有 moq > 1
+      // 如果 moq 存在且等於 qty，很可能是固定組合
+      const isFixed = it.fixedQuantity || (it.moq && it.moq > 1 && it.moq === it.qty);
 
       // 固定數量商品：只顯示數量，不顯示 +/- 按鈕
       const qtyCtrl = isFixed
