@@ -2335,7 +2335,7 @@ const FREE_SHIPPING_THRESHOLD = 3000;
 
 function cartSubtotal() {
   return Object.values(cart).reduce((s, it) => {
-    // 兼容舊數據：即使沒有 fixedQuantity，也檢查是否為固定組合
+    // 兼容舊數據：啟發式判斷是否為固定組合
     const isFixed = it.fixedQuantity || (it.moq && it.moq > 1 && it.moq === it.qty);
     // 固定組合商品：價格已經是總價，不乘以數量
     // 一般商品：單價 × 數量
@@ -2390,8 +2390,9 @@ function renderCart() {
       </div>`;
   } else {
     list.innerHTML = items.map(([k, it]) => {
-      // 兼容舊數據：即使沒有 fixedQuantity，也檢查商品是否有 moq > 1
-      // 如果 moq 存在且等於 qty，很可能是固定組合
+      // 兼容舊數據的啟發式判斷：
+      // 1. 有 fixedQuantity 屬性
+      // 2. 或者 moq > 1 且數量等於 moq（如 5隻組 qty=5）
       const isFixed = it.fixedQuantity || (it.moq && it.moq > 1 && it.moq === it.qty);
 
       // 固定數量商品：只顯示數量，不顯示 +/- 按鈕
