@@ -2035,14 +2035,11 @@ function renderCard(d) {
   const key = `${d.name}|${d.size}`;
   const isSoldOut = d.soldOut === 1;
 
-  // 判斷是否為組合價（有起訂量）
-  const isGroupPrice = d.note && d.note.includes('才出貨');
-
   // 售完展示模式：顯示「已售完」標記，隱藏價格和訂購按鈕
+  // 所有商品都不顯示「/ 隻」，改由備註說明數量和總價
   const priceHtml = isSoldOut
     ? '<div class="sold-out-badge">已售完</div>'
-    : `<div class="price">${d.price.toLocaleString()}</div>
-        ${isGroupPrice ? '' : '<div class="price-note">/ 隻</div>'}`;
+    : `<div class="price">${d.price.toLocaleString()}</div>`;
 
   const buttonHtml = isSoldOut
     ? ''
