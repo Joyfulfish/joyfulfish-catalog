@@ -1077,6 +1077,25 @@
     font-size: 15px;
     color: var(--text-primary);
   }
+  .cart-item-ctrl.fixed {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    background: var(--bg-secondary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+  }
+  .qty-num-fixed {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .qty-fixed-note {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
   .cart-item-sub {
     grid-column: 2;
     font-family: 'EB Garamond', serif;
@@ -1867,17 +1886,17 @@ const RAW = [
 ,
   {cat:"蝦虎/塘鱧",name:"高帆雀斑吻蝦虎",size:"4",stock:10,price:400,soldOut:0,note:"",tiers:[{"moq": 1, "cost": 240.0, "price": 400}, {"moq": 5, "cost": 200.0, "price": 350}, {"moq": 7, "cost": 180.0, "price": 300}]}
 ,
-  {cat:"蟹",name:"金眼彩紅惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"金眼彩紅惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"糖果惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"糖果惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"金睛玉面惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"金睛玉面惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"金眼黃背惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"金眼黃背惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"白臂糖果惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"白臂糖果惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"小熊維尼蟹",size:"M",stock:10,price:1500,soldOut:0,note:"2隻才出貨，一公一母",tiers:[{"moq": 2, "cost": 0, "price": 750.0, "total_price": 1500, "note": "一公一母"}, {"moq": 4, "cost": 0, "price": 700.0, "total_price": 2800, "note": "兩公兩母"}]}
+  {cat:"蟹",name:"小熊維尼蟹",size:"M",stock:10,price:1500,soldOut:0,note:"2隻才出貨，一公一母",fixedQuantity:true,tiers:[{"moq": 2, "cost": 0, "price": 750.0, "total_price": 1500, "note": "一公一母"}, {"moq": 4, "cost": 0, "price": 700.0, "total_price": 2800, "note": "兩公兩母"}]}
 ,
   {cat:"脂鯉",name:"紅月可卡燈",size:"2~3",stock:10,price:750,soldOut:0,note:"5隻才出貨",tiers:[{"moq": 5, "cost": 90.0, "price": 150}, {"moq": 40, "cost": 70.0, "price": 100}, {"moq": 50, "cost": 65.0, "price": 100}]}
 ,
@@ -1897,15 +1916,15 @@ const RAW = [
 ,
   {cat:"鰍類",name:"無紋秉氏吸鰍",size:"5~6",stock:10,price:600,soldOut:0,note:"",tiers:[{"moq": 1, "cost": 350.0, "price": 600}, {"moq": 3, "cost": 300.0, "price": 500}, {"moq": 5, "cost": 250.0, "price": 400}]}
 ,
-  {cat:"蟹",name:"火眼金背惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"火眼金背惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"火焰惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"火焰惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"迪斯可惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"迪斯可惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"香蕉惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"香蕉惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ,
-  {cat:"蟹",name:"萬聖節惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
+  {cat:"蟹",name:"萬聖節惡魔蟹",size:"M",stock:10,price:2000,soldOut:0,note:"3隻才出貨，一公兩母",fixedQuantity:true,tiers:[{"moq": 3, "cost": 0, "price": 666.67, "total_price": 2000, "note": "一公兩母"}, {"moq": 5, "cost": 0, "price": 600.0, "total_price": 3000, "note": "兩公三母"}]}
 ];
 
 // Category icons
@@ -2101,7 +2120,8 @@ function renderCard(d) {
               data-name="${escapeAttr(d.name)}"
               data-size="${escapeAttr(d.size)}"
               data-price="${Math.round(defaultTotal)}"
-              data-moq="${d.tiers[0].moq}">＋ 加入清單</button>`;
+              data-moq="${d.tiers[0].moq}"
+              data-fixed-quantity="${d.fixedQuantity || false}">＋ 加入清單</button>`;
   } else {
     // 無階梯定價：顯示單一價格
     priceHtml = `<div class="price">${d.price.toLocaleString()}</div>`;
@@ -2109,7 +2129,9 @@ function renderCard(d) {
               data-key="${escapeAttr(key)}"
               data-name="${escapeAttr(d.name)}"
               data-size="${escapeAttr(d.size)}"
-              data-price="${d.price}">＋ 加入清單</button>`;
+              data-price="${d.price}"
+              data-moq="1"
+              data-fixed-quantity="false">＋ 加入清單</button>`;
   }
 
   const noteHtml = d.note ? `<div class="fish-note">${d.note}</div>` : '';
@@ -2143,7 +2165,7 @@ function updateTierPrice(selectEl) {
     priceEl.textContent = Math.round(price).toLocaleString();
   }
 
-  // 更新按鈕的價格和MOQ數據
+  // 更新按鈕的價格和MOQ數據（fixed-quantity 屬性已在 renderCard 設置，不需要更新）
   const card = selectEl.closest('.fish-card');
   const btn = card.querySelector('.add-btn');
   if (btn) {
@@ -2351,21 +2373,33 @@ function renderCart() {
         清單還是空的，挑幾隻喜歡的吧
       </div>`;
   } else {
-    list.innerHTML = items.map(([k, it]) => `
+    list.innerHTML = items.map(([k, it]) => {
+      const isFixed = it.fixedQuantity;
+
+      // 固定數量商品：只顯示數量，不顯示 +/- 按鈕
+      const qtyCtrl = isFixed
+        ? `<div class="cart-item-ctrl fixed">
+             <span class="qty-num-fixed">${it.qty} 隻</span>
+             <span class="qty-fixed-note">(固定組合)</span>
+           </div>`
+        : `<div class="cart-item-ctrl">
+             <button class="qty-btn" data-act="dec">−</button>
+             <span class="qty-num">${it.qty}</span>
+             <button class="qty-btn" data-act="inc">＋</button>
+           </div>`;
+
+      return `
       <div class="cart-item" data-key="${escapeAttr(k)}">
         <div class="cart-item-info">
           <div class="cart-item-name">${it.name}</div>
           <div class="cart-item-size">規格 ${it.size} cm</div>
           <div class="cart-item-unit">NT$ ${it.price.toLocaleString()} / 隻</div>
         </div>
-        <div class="cart-item-ctrl">
-          <button class="qty-btn" data-act="dec">−</button>
-          <span class="qty-num">${it.qty}</span>
-          <button class="qty-btn" data-act="inc">＋</button>
-        </div>
+        ${qtyCtrl}
         <button class="cart-item-remove" data-act="rm">移除</button>
         <div class="cart-item-sub">${(it.qty * it.price).toLocaleString()}</div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
   }
 
   // 更新金額顯示
@@ -2422,8 +2456,19 @@ document.getElementById('mainContent').addEventListener('click', e => {
   const name = btn.dataset.name;
   const size = btn.dataset.size;
   const price = Number(btn.dataset.price);
-  if (cart[k]) cart[k].qty += 1;
-  else cart[k] = { name, size, price, qty: 1 };
+  const moq = Number(btn.dataset.moq) || 1;
+  const fixedQuantity = btn.dataset.fixedQuantity === 'true';
+
+  if (cart[k]) {
+    // 固定數量商品：不能累加數量，改為提示
+    if (fixedQuantity) {
+      toast(`${name} 為固定組合商品，已在清單中`);
+      return;
+    }
+    cart[k].qty += 1;
+  } else {
+    cart[k] = { name, size, price, qty: moq, moq, fixedQuantity };
+  }
   saveCart();
   refreshFab();
   refreshAddedBadges();
@@ -2437,8 +2482,23 @@ document.getElementById('cartList').addEventListener('click', e => {
   const k = itemEl.dataset.key;
   const act = e.target.dataset.act;
   if (!act || !cart[k]) return;
+
+  // 固定數量商品：不能調整數量，只能移除
+  if (cart[k].fixedQuantity && (act === 'inc' || act === 'dec')) {
+    toast('固定組合商品無法調整數量');
+    return;
+  }
+
   if (act === 'inc') cart[k].qty += 1;
-  else if (act === 'dec') { cart[k].qty -= 1; if (cart[k].qty <= 0) delete cart[k]; }
+  else if (act === 'dec') {
+    const minQty = cart[k].moq || 1;
+    if (cart[k].qty > minQty) {
+      cart[k].qty -= 1;
+    } else {
+      toast(`最低數量為 ${minQty}`);
+      return;
+    }
+  }
   else if (act === 'rm') delete cart[k];
   saveCart();
   refreshFab();
