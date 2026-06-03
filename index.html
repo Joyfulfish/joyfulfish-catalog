@@ -2334,7 +2334,12 @@ const SHIPPING_FEE = 200;
 const FREE_SHIPPING_THRESHOLD = 3000;
 
 function cartSubtotal() {
-  return Object.values(cart).reduce((s, it) => s + it.qty * it.price, 0);
+  return Object.values(cart).reduce((s, it) => {
+    // 固定組合商品：價格已經是總價，不乘以數量
+    // 一般商品：單價 × 數量
+    const itemTotal = it.fixedQuantity ? it.price : (it.qty * it.price);
+    return s + itemTotal;
+  }, 0);
 }
 
 function cartShipping(subtotal) {
@@ -2407,6 +2412,10 @@ function renderCart() {
         ? `<div class="cart-item-note">${it.qty}隻${it.tierNote ? `，${it.tierNote}` : ''}</div>`
         : '';
 
+      // 固定組合商品：小計 = 組合價（不乘以數量）
+      // 一般商品：小計 = 單價 × 數量
+      const subtotal = isFixed ? it.price : (it.qty * it.price);
+
       return `
       <div class="cart-item" data-key="${escapeAttr(k)}">
         <div class="cart-item-info">
@@ -2417,7 +2426,7 @@ function renderCart() {
         </div>
         ${qtyCtrl}
         <button class="cart-item-remove" data-act="rm">移除</button>
-        <div class="cart-item-sub">${(it.qty * it.price).toLocaleString()}</div>
+        <div class="cart-item-sub">${subtotal.toLocaleString()}</div>
       </div>`;
     }).join('');
   }
