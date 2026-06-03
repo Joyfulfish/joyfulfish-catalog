@@ -2388,12 +2388,17 @@ function renderCart() {
              <button class="qty-btn" data-act="inc">＋</button>
            </div>`;
 
+      // 固定組合商品：顯示組合價，不顯示「/ 隻」
+      const priceDisplay = isFixed
+        ? `NT$ ${it.price.toLocaleString()} <span style="font-size: 12px; color: var(--text-muted);">(組合價)</span>`
+        : `NT$ ${it.price.toLocaleString()} / 隻`;
+
       return `
       <div class="cart-item" data-key="${escapeAttr(k)}">
         <div class="cart-item-info">
           <div class="cart-item-name">${it.name}</div>
           <div class="cart-item-size">規格 ${it.size} cm</div>
-          <div class="cart-item-unit">NT$ ${it.price.toLocaleString()} / 隻</div>
+          <div class="cart-item-unit">${priceDisplay}</div>
         </div>
         ${qtyCtrl}
         <button class="cart-item-remove" data-act="rm">移除</button>
