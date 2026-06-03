@@ -1051,6 +1051,15 @@
     font-size: 11px; color: var(--text-secondary);
     letter-spacing: 0.05em; margin-top: 2px;
   }
+  .cart-item-note {
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--bg-secondary);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+    display: inline-block;
+  }
   .cart-item-unit {
     font-family: 'EB Garamond', serif;
     font-size: 12px; color: var(--text-secondary);
@@ -2388,16 +2397,22 @@ function renderCart() {
              <button class="qty-btn" data-act="inc">＋</button>
            </div>`;
 
-      // 固定組合商品：顯示組合價，不顯示「/ 隻」
+      // 固定組合商品：顯示總金額和備註（幾隻、幾公幾母），不顯示「/ 隻」
       const priceDisplay = isFixed
-        ? `NT$ ${it.price.toLocaleString()} <span style="font-size: 12px; color: var(--text-muted);">(組合價)</span>`
+        ? `NT$ ${it.price.toLocaleString()}`
         : `NT$ ${it.price.toLocaleString()} / 隻`;
+
+      // 固定組合商品：顯示備註（幾隻、幾公幾母）
+      const noteDisplay = isFixed && it.tierNote
+        ? `<div class="cart-item-note">${it.qty}隻${it.tierNote ? `，${it.tierNote}` : ''}</div>`
+        : '';
 
       return `
       <div class="cart-item" data-key="${escapeAttr(k)}">
         <div class="cart-item-info">
           <div class="cart-item-name">${it.name}</div>
           <div class="cart-item-size">規格 ${it.size} cm</div>
+          ${noteDisplay}
           <div class="cart-item-unit">${priceDisplay}</div>
         </div>
         ${qtyCtrl}
@@ -2464,6 +2479,19 @@ document.getElementById('mainContent').addEventListener('click', e => {
   const moq = Number(btn.dataset.moq) || 1;
   const fixedQuantity = btn.dataset.fixedQuantity === 'true';
 
+  // 從原始資料中找到商品，取得階梯備註
+  let tierNote = '';
+  if (fixedQuantity) {
+    const product = RAW.find(d => d.name === name && d.size === size);
+    if (product && product.tiers && product.tiers.length > 0) {
+      // 從選擇的階梯中找到對應的備註
+      const selectedTier = product.tiers.find(t => t.moq === moq);
+      if (selectedTier && selectedTier.note) {
+        tierNote = selectedTier.note;
+      }
+    }
+  }
+
   if (cart[k]) {
     // 固定數量商品：不能累加數量，改為提示
     if (fixedQuantity) {
@@ -2472,7 +2500,7 @@ document.getElementById('mainContent').addEventListener('click', e => {
     }
     cart[k].qty += 1;
   } else {
-    cart[k] = { name, size, price, qty: moq, moq, fixedQuantity };
+    cart[k] = { name, size, price, qty: moq, moq, fixedQuantity, tierNote };
   }
   saveCart();
   refreshFab();
