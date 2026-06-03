@@ -2493,8 +2493,11 @@ document.getElementById('mainContent').addEventListener('click', e => {
   if (fixedQuantity) {
     const product = RAW.find(d => d.name === name && d.size === size);
     if (product && product.tiers && product.tiers.length > 0) {
-      // 從選擇的階梯中找到對應的備註
-      const selectedTier = product.tiers.find(t => t.moq === moq);
+      // 從選擇的階梯中找到對應的備註（用 moq 和 total_price 或 price 對應）
+      const selectedTier = product.tiers.find(t => {
+        const tierTotal = t.total_price || (t.price * t.moq);
+        return t.moq === moq && Math.round(tierTotal) === price;
+      });
       if (selectedTier && selectedTier.note) {
         tierNote = selectedTier.note;
       }
