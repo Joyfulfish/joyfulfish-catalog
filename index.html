@@ -742,7 +742,7 @@
   .tier-select {
     width: 100%;
     padding: 10px 12px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     border: 1.5px solid var(--border);
     border-radius: 8px;
     background: var(--surface);
@@ -751,6 +751,7 @@
     font-family: 'Zen Maru Gothic', sans-serif;
     cursor: pointer;
     transition: all 0.2s;
+    display: block;
   }
   .tier-select:hover {
     border-color: var(--accent);
@@ -760,8 +761,13 @@
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(74,111,165,0.1);
   }
-  .tier-price {
-    margin-top: 0 !important;
+
+  /* 有階梯定價時的卡片底部布局 */
+  .card-footer:has(.tier-select) {
+    display: block;
+  }
+  .card-footer:has(.tier-select) .tier-price {
+    margin-top: 0;
   }
 
   .card-footer {
@@ -2083,11 +2089,12 @@ function renderCard(d) {
 
     const defaultTotal = d.tiers[0].total_price || (d.tiers[0].price * d.tiers[0].moq);
 
-    priceHtml = `
-      <select class="tier-select" data-key="${escapeAttr(key)}" onchange="updateTierPrice(this)">
+    // 階梯定價：下拉選擇器和價格分開
+    const tierSelectHtml = `<select class="tier-select" data-key="${escapeAttr(key)}" onchange="updateTierPrice(this)">
         ${tiersOptions}
-      </select>
-      <div class="price tier-price">${Math.round(defaultTotal).toLocaleString()}</div>`;
+      </select>`;
+
+    priceHtml = `${tierSelectHtml}<div class="price tier-price">${Math.round(defaultTotal).toLocaleString()}</div>`;
 
     buttonHtml = `<button class="add-btn"
               data-key="${escapeAttr(key)}"
